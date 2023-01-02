@@ -1,0 +1,10 @@
+﻿<MileXaml:Application
+  x:Class="MileXamlBlankApp.App"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:MileXaml="using:Mile.Xaml"
+  xmlns:local="using:MileXamlBlankApp">
+  <Application.Resources>
+    <MileXaml:XamlControlsResources/>
+  </Application.Resources>
+</MileXaml:Application>
