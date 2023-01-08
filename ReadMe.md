@@ -12,3 +12,8 @@ issue at https://github.com/ProjectMile/Mile.Xaml/issues.
 
 A project for a single page C++/WinRT XAML Islands app with Mile.Xaml and no
 predefined layout.
+
+### [MileXamlControlsDemo](MileXamlControlsDemo)
+
+A project for a single page C++/WinRT XAML Islands app with Mile.Xaml with
+modernized Windows 11 style XAML controls.
