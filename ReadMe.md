@@ -1,6 +1,6 @@
 ﻿# Mile.Xaml.Samples
 
-Provide samples that demonstrate using XAML Islands with 
+Provide samples that demonstrate using XAML Islands with
 [Mile.Xaml](https://github.com/ProjectMile/Mile.Xaml).
 
 If you meet some issue when using implementations in this repo, please fire an
@@ -17,3 +17,8 @@ predefined layout.
 
 A project for a single page C++/WinRT XAML Islands app with Mile.Xaml with
 modernized Windows 11 style XAML controls.
+
+### [MileXamlBlankAppNetNative](MileXamlBlankAppNetNative)
+
+A project for a single page C# (.Net Native) XAML Islands app with Mile.Xaml and no
+predefined layout.
