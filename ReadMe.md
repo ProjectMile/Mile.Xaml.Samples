@@ -22,3 +22,13 @@ modernized Windows 11 style XAML controls.
 
 A project for a single page C# (.Net Native) XAML Islands app with Mile.Xaml and no
 predefined layout.
+
+### [MileXamlBlankAppNetFramework](MileXamlBlankAppNetFramework)
+
+A project (MsBuild Style Project) for a single page C# (.Net Framework) XAML Islands app with Mile.Xaml and no
+predefined layout.
+
+### [MileXamlBlankAppNetFrameworkModern](MileXamlBlankAppNetFrameworkModern)
+
+A project (.Net SDK Style Project) for a single page C# (.Net Framework) XAML Islands app with Mile.Xaml and no
+predefined layout.
