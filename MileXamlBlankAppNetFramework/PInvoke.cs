@@ -26,15 +26,6 @@ namespace Native.Win32.System.LibraryLoader
 
 namespace Native.Win32.System.Threading
 {
-    public static class Process
-    {
-        [DllImport(
-            "Kernel32.dll",
-            CharSet = CharSet.Unicode,
-            ExactSpelling = true)]
-        public static extern void ExitProcess([In] uint uExitCode);
-    }
-
     public static class Startup
     {
         [Flags]
