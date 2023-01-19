@@ -1,4 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project>
   <Import Project="$(MSBuildThisFileDirectory)Mile.Project.Windows\Mile.Project.Build.props" />
+
+  <PropertyGroup Condition="'$(MSBuildProjectExtension)' == '.csproj'">
+    <!-- Workaround for WPF -->
+    <!-- <MSBuildProjectName>$(MSBuildProjectName.Split("_")[0])</MSBuildProjectName> -->
+    <MSBuildProjectExtensionsPath></MSBuildProjectExtensionsPath>
+    <AppxPackageDir></AppxPackageDir>
+    <!-- Use for .Net SDK -->
+    <BaseOutputPath Condition="'$(UsingMicrosoftNETSdk)' == 'true'"></BaseOutputPath>
+    <BaseIntermediateOutputPath Condition="'$(UsingMicrosoftNETSdk)' == 'true'"></BaseIntermediateOutputPath>
+    <!-- Use for Legacy -->
+    <OutputPath Condition="'$(UsingMicrosoftNETSdk)' != 'true'"></OutputPath>
+    <IntermediateOutputPath Condition="'$(UsingMicrosoftNETSdk)' != 'true'"></IntermediateOutputPath>
+    <!-- Use for .Net Native -->
+    <IlcOutputPath Condition="'$(UseDotNetNativeToolchain)' == 'true'"></IlcOutputPath>
+    <IlcIntermediateRootPath Condition="'$(UseDotNetNativeToolchain)' == 'true'"></IlcIntermediateRootPath>
+  </PropertyGroup>
+
+  <!-- <PropertyGroup>
+    <RuntimeIdentifiers>win;win-x86;win-x64;win-arm;win-arm64;win10-x86;win10-x64;win10-arm;win10-arm64;win10-x86-aot;win10-x64-aot;win10-arm-aot;win10-arm64-aot</RuntimeIdentifiers>
+  </PropertyGroup> -->
 </Project>
