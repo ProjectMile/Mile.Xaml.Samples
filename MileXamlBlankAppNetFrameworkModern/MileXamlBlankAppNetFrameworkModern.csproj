@@ -12,7 +12,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Windows.SDK.Contracts" Version="$(TargetPlatformVersion.TrimEnd('.0')).*" />
-    <PackageReference Include="Mile.Xaml" Version="1000.0.0.0" />
+    <PackageReference Include="Mile.Xaml" Version="1.2.495" />
   </ItemGroup>
 
 </Project>
