@@ -1,87 +1,21 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <PlatformTarget Condition="'$(Platform)' == 'x86'">x86</PlatformTarget>
-    <PlatformTarget Condition="'$(Platform)' == 'x64'">x64</PlatformTarget>
-    <PlatformTarget Condition="'$(Platform)' == 'ARM64'">ARM64</PlatformTarget>
-  </PropertyGroup>
-  <PropertyGroup>
-    <ProjectGuid>{EE6C5A2A-5CAC-467C-B8CC-9C14159D1A4D}</ProjectGuid>
+    <Platforms>x86;x64;ARM64</Platforms>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>MileXamlBlankAppNetFramework</RootNamespace>
-    <AssemblyName>MileXamlBlankAppNetFramework</AssemblyName>
-    <DefaultLanguage>en-us</DefaultLanguage>
-    <TargetPlatformIdentifier>Windows</TargetPlatformIdentifier>
+    <TargetFramework>net481</TargetFramework>
     <TargetPlatformVersion>10.0.22621.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.19041.0</TargetPlatformMinVersion>
-    <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
-    <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <Deterministic>true</Deterministic>
-    <ApplicationManifest>Properties\App.manifest</ApplicationManifest>
     <LangVersion>latest</LangVersion>
+    <ApplicationManifest>App.manifest</ApplicationManifest>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath Condition="'$(OutputPath)' == ''">bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE;DISABLE_XAML_GENERATED_MAIN</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath Condition="'$(OutputPath)' == ''">bin\Release\</OutputPath>
-    <DefineConstants>TRACE;DISABLE_XAML_GENERATED_MAIN</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" />
+    <PackageReference Include="Microsoft.Windows.CsWin32" Version="0.2.188-beta" IncludeAssets="build;analyzers" />
+    <PackageReference Include="Microsoft.Windows.SDK.Contracts" Version="$([System.Version]::Parse('$(TargetPlatformVersion)').ToString(3)).*" />
+    <PackageReference Include="Microsoft.Windows.SDK.Win32Metadata" Version="42.0.39-preview" />
+    <PackageReference Include="Mile.Xaml" Version="1.2.495" />
   </ItemGroup>
-  <ItemGroup>
-    <Compile Include="App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="MainPage.xaml.cs">
-      <DependentUpon>MainPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="PInvoke.cs" />
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ApplicationDefinition Include="App.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </ApplicationDefinition>
-    <Page Include="MainPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Properties\App.config" />
-    <None Include="Properties\App.manifest" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Microsoft.Windows.SDK.Contracts">
-      <Version>$(TargetPlatformVersion.TrimEnd('.0')).*</Version>
-    </PackageReference>
-    <PackageReference Include="Mile.Xaml">
-      <Version>1.2.495</Version>
-    </PackageReference>
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+
 </Project>

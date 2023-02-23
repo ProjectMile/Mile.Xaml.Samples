@@ -9,9 +9,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MileXamlControlsDemo", "Mil
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MileXamlBlankAppNetNative", "MileXamlBlankAppNetNative\MileXamlBlankAppNetNative.csproj", "{1A2D0314-E0C4-46EF-BDBC-4E2D778E3D3B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MileXamlBlankAppNetFramework", "MileXamlBlankAppNetFramework\MileXamlBlankAppNetFramework.csproj", "{EE6C5A2A-5CAC-467C-B8CC-9C14159D1A4D}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MileXamlBlankAppNetFrameworkModern", "MileXamlBlankAppNetFrameworkModern\MileXamlBlankAppNetFrameworkModern.csproj", "{58DCE199-78EF-4D81-A632-10B4C93E02FB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MileXamlBlankAppNetFramework", "MileXamlBlankAppNetFramework\MileXamlBlankAppNetFramework.csproj", "{58DCE199-78EF-4D81-A632-10B4C93E02FB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -65,18 +63,6 @@ Global
 		{1A2D0314-E0C4-46EF-BDBC-4E2D778E3D3B}.Release|x86.ActiveCfg = Release|x86
 		{1A2D0314-E0C4-46EF-BDBC-4E2D778E3D3B}.Release|x86.Build.0 = Release|x86
 		{1A2D0314-E0C4-46EF-BDBC-4E2D778E3D3B}.Release|x86.Deploy.0 = Release|x86
-		{EE6C5A2A-5CAC-467C-B8CC-9C14159D1A4D}.Debug|ARM64.ActiveCfg = Debug|ARM64
-		{EE6C5A2A-5CAC-467C-B8CC-9C14159D1A4D}.Debug|ARM64.Build.0 = Debug|ARM64
-		{EE6C5A2A-5CAC-467C-B8CC-9C14159D1A4D}.Debug|x64.ActiveCfg = Debug|x64
-		{EE6C5A2A-5CAC-467C-B8CC-9C14159D1A4D}.Debug|x64.Build.0 = Debug|x64
-		{EE6C5A2A-5CAC-467C-B8CC-9C14159D1A4D}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{EE6C5A2A-5CAC-467C-B8CC-9C14159D1A4D}.Debug|x86.Build.0 = Debug|Any CPU
-		{EE6C5A2A-5CAC-467C-B8CC-9C14159D1A4D}.Release|ARM64.ActiveCfg = Release|ARM64
-		{EE6C5A2A-5CAC-467C-B8CC-9C14159D1A4D}.Release|ARM64.Build.0 = Release|ARM64
-		{EE6C5A2A-5CAC-467C-B8CC-9C14159D1A4D}.Release|x64.ActiveCfg = Release|x64
-		{EE6C5A2A-5CAC-467C-B8CC-9C14159D1A4D}.Release|x64.Build.0 = Release|x64
-		{EE6C5A2A-5CAC-467C-B8CC-9C14159D1A4D}.Release|x86.ActiveCfg = Release|Any CPU
-		{EE6C5A2A-5CAC-467C-B8CC-9C14159D1A4D}.Release|x86.Build.0 = Release|Any CPU
 		{58DCE199-78EF-4D81-A632-10B4C93E02FB}.Debug|ARM64.ActiveCfg = Debug|ARM64
 		{58DCE199-78EF-4D81-A632-10B4C93E02FB}.Debug|ARM64.Build.0 = Debug|ARM64
 		{58DCE199-78EF-4D81-A632-10B4C93E02FB}.Debug|x64.ActiveCfg = Debug|x64

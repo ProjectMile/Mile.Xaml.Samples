@@ -18,17 +18,12 @@ predefined layout.
 A project for a single page C++/WinRT XAML Islands app with Mile.Xaml with
 modernized Windows 11 style XAML controls.
 
-### [MileXamlBlankAppNetNative](MileXamlBlankAppNetNative)
-
-A project for a single page C# (.Net Native) XAML Islands app with Mile.Xaml and no
-predefined layout.
-
 ### [MileXamlBlankAppNetFramework](MileXamlBlankAppNetFramework)
 
-A project (MsBuild Style Project) for a single page C# (.Net Framework) XAML Islands app with Mile.Xaml and no
+A project (.NET SDK Style Project) for a single page C# (.NET Framework) XAML Islands app with Mile.Xaml and no
 predefined layout.
 
-### [MileXamlBlankAppNetFrameworkModern](MileXamlBlankAppNetFrameworkModern)
+### [MileXamlBlankAppNetNative](MileXamlBlankAppNetNative)
 
-A project (.Net SDK Style Project) for a single page C# (.Net Framework) XAML Islands app with Mile.Xaml and no
+A project for a single page C# (.NET Native) XAML Islands app with Mile.Xaml and no
 predefined layout.

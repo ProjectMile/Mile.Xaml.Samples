@@ -1,6 +1,6 @@
 ﻿using Mile.Xaml;
 
-namespace MileXamlBlankAppNetFramework
+namespace MileXamlBlankAppNetFrameworkModern
 {
     sealed partial class App : Application
     {

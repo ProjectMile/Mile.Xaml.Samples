@@ -1,7 +1,7 @@
 ﻿using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
-namespace MileXamlBlankAppNetFramework
+namespace MileXamlBlankAppNetFrameworkModern
 {
     public sealed partial class MainPage : Page
     {
