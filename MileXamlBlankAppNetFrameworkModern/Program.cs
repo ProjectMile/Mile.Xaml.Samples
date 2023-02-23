@@ -1,68 +1,71 @@
 ﻿using System;
 using System.Runtime.InteropServices;
-using Native.Win32.System.LibraryLoader;
-using Native.Win32.System.Threading;
-using Native.Win32.UI.Input.KeyboardAndMouse;
-using Native.Win32.UI.WindowsAndMessaging;
+using Windows.Win32.Foundation;
+using Windows.Win32.System.Threading;
+using Windows.Win32.UI.Input.KeyboardAndMouse;
+using Windows.Win32.UI.WindowsAndMessaging;
+using static Windows.Win32.PInvoke;
 
 namespace MileXamlBlankAppNetFrameworkModern
 {
     public static class Program
     {
         [STAThread]
-        public static int Main()
+        public static unsafe int Main()
         {
             App app = new();
 
-            var hWnd = Window.CreateWindowExW(
-                dwExStyle: Window.ExStyle.Left,
-                lpClassName: "Mile.Xaml.ContentWindow",
-                lpWindowName: "MileXamlBlankApp (.Net Framework)",
-                dwStyle: Window.Style.OverLappedWindow,
-                X: Window.CreateUseDefault,
-                Y: 0,
-                nWidth: Window.CreateUseDefault,
-                nHeight: 0,
-                hInstance: Module.GetModuleHandleW(null),
-                lpParam: Marshal.GetIUnknownForObject(new MainPage()));
+            var hWnd = CreateWindowEx(
+                WINDOW_EX_STYLE.WS_EX_LEFT,
+                "Mile.Xaml.ContentWindow",
+                "MileXamlBlankApp (.Net Framework)",
+                WINDOW_STYLE.WS_OVERLAPPEDWINDOW,
+                CW_USEDEFAULT,
+                0,
+                CW_USEDEFAULT,
+                0,
+                HWND.Null,
+                null,
+                GetModuleHandle(string.Empty),
+                lpParam: Marshal.GetIUnknownForObject(new MainPage()).ToPointer());
             if (hWnd == IntPtr.Zero)
             {
                 return -1;
             }
 
-            Startup.InfoW info = new();
+            STARTUPINFOW info = new();
             info.cb = (uint)Marshal.SizeOf(info);
-            Startup.GetStartupInfoW(out info);
+            GetStartupInfo(&info);
 
-            Window.ShowWindow(hWnd, info.wShowWindow);
-            Window.UpdateWindow(hWnd);
+            ShowWindow(hWnd, (SHOW_WINDOW_CMD)info.wShowWindow);
+            UpdateWindow(hWnd);
 
-            Message.Msg msg;
-            while (Message.GetMessageW(
-                lpMsg: out msg,
-                wMsgFilterMin: 0,
-                wMsgFilterMax: 0))
+            MSG msg;
+            while (GetMessage(
+                &msg,
+                HWND.Null,
+                0,
+                0))
             {
-                if (msg.message == (uint)Keyboard.Notifications.SysKeyDown
-                    && msg.wParam == (UIntPtr)Keyboard.VirtualKey.F4)
+                if (msg.message == WM_SYSKEYDOWN
+                    && msg.wParam.Value == (nuint)VIRTUAL_KEY.VK_F4)
                 {
-                    Message.SendMessageW(
-                        Window.Ancestor.GetAncestor(
+                    SendMessage(
+                        GetAncestor(
                             hWnd,
-                            Window.Ancestor.Flag.Root),
+                            GET_ANCESTOR_FLAGS.GA_ROOT),
                         msg.message,
                         msg.wParam,
                         msg.lParam);
                     continue;
                 }
 
-                Message.TranslateMessage(in msg);
-                Message.DispatchMessageW(in msg);
+                TranslateMessage(&msg);
+                DispatchMessage(&msg);
             }
 
             app.Dispose();
-            // Due to the design of .Net Native, the program won't exit when returning a number.
-            return unchecked((int)msg.wParam.ToUInt32());
+            return (int)msg.wParam.Value;
         }
     }
 }
