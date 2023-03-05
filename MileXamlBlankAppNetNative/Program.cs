@@ -29,11 +29,7 @@ namespace MileXamlBlankAppNetNative
                 Process.ExitProcess(unchecked((uint)-1));
             }
 
-            Startup.InfoW info = new();
-            info.cb = (uint)Marshal.SizeOf(info);
-            Startup.GetStartupInfoW(out info);
-
-            Window.ShowWindow(hWnd, info.wShowWindow);
+            Window.ShowWindow(hWnd, Window.ShowCmd.Default);
             Window.UpdateWindow(hWnd);
 
             Message.Msg msg;

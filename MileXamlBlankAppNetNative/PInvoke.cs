@@ -30,15 +30,6 @@ namespace System.Runtime.InteropServices
     }
 }
 
-namespace Native.Win32.System.Console
-{
-    public static class Text
-    {
-        [Flags]
-        public enum CharacterAttributes : ushort { }
-    }
-}
-
 namespace Native.Win32.System.LibraryLoader
 {
     public static class Module
@@ -62,44 +53,6 @@ namespace Native.Win32.System.Threading
             CharSet = CharSet.Unicode,
             ExactSpelling = true)]
         public static extern void ExitProcess([In] uint uExitCode);
-    }
-
-    public static class Startup
-    {
-        [Flags]
-        public enum Flag : uint { }
-
-        [StructLayout(
-            LayoutKind.Sequential,
-            CharSet = CharSet.Unicode)]
-        public struct InfoW
-        {
-            public uint cb;
-            public IntPtr lpReserved;
-            public IntPtr lpDesktop;
-            public IntPtr lpTitle;
-            public uint dwX;
-            public uint dwY;
-            public uint dwXSize;
-            public uint dwYSize;
-            public uint dwXCountChars;
-            public uint dwYCountChars;
-            public Console.Text.CharacterAttributes dwFillAttribute;
-            public Flag dwFlags;
-            public UI.WindowsAndMessaging.Window.ShowCmd wShowWindow;
-            public ushort cbReserved2;
-            public IntPtr lpReserved2;
-            public IntPtr hStdInput;
-            public IntPtr hStdOutput;
-            public IntPtr hStdError;
-        }
-
-        [DllImport(
-            "Kernel32.dll",
-            CharSet = CharSet.Unicode,
-            ExactSpelling = true)]
-        public static extern void GetStartupInfoW(
-            [Out] out InfoW lpStartupInfo);
     }
 }
 
@@ -187,7 +140,10 @@ namespace Native.Win32.UI.WindowsAndMessaging
         }
 
         [Flags]
-        public enum ShowCmd : uint { }
+        public enum ShowCmd : uint
+        {
+            Default = 10
+        }
 
         [Flags]
         public enum Style : uint

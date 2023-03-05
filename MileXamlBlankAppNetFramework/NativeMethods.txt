@@ -1,9 +1,6 @@
 ﻿// Windows.Win32.System.LibraryLoader
 GetModuleHandle
 
-// Windows.Win32.System.Threading
-GetStartupInfo
-
 // Windows.Win32.UI.Input.KeyboardAndMouse
 VIRTUAL_KEY
 

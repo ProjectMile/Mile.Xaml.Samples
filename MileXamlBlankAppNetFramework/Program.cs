@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 using Windows.Win32.Foundation;
-using Windows.Win32.System.Threading;
 using Windows.Win32.UI.Input.KeyboardAndMouse;
 using Windows.Win32.UI.WindowsAndMessaging;
 using static Windows.Win32.PInvoke;
@@ -33,11 +32,7 @@ namespace MileXamlBlankAppNetFrameworkModern
                 return -1;
             }
 
-            STARTUPINFOW info = new();
-            info.cb = (uint)Marshal.SizeOf(info);
-            GetStartupInfo(&info);
-
-            ShowWindow(hWnd, (SHOW_WINDOW_CMD)info.wShowWindow);
+            ShowWindow(hWnd, SHOW_WINDOW_CMD.SW_SHOWDEFAULT);
             UpdateWindow(hWnd);
 
             MSG msg;
