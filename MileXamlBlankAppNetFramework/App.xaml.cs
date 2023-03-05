@@ -4,6 +4,10 @@ namespace MileXamlBlankAppNetFrameworkModern
 {
     sealed partial class App : Application
     {
-        public App() => this.Initialize();
+        public App()
+        {
+            base.Initialize();
+            this.InitializeComponent();
+        }
     }
 }

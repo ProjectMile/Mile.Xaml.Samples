@@ -26,7 +26,7 @@ namespace MileXamlBlankAppNetFrameworkModern
                 HWND.Null,
                 null,
                 GetModuleHandle(string.Empty),
-                lpParam: Marshal.GetIUnknownForObject(new MainPage()).ToPointer());
+                Marshal.GetIUnknownForObject(new MainPage()).ToPointer());
             if (hWnd == IntPtr.Zero)
             {
                 return -1;

@@ -6,7 +6,8 @@ namespace MileXamlBlankAppNetNative
     {
         public App()
         {
-            this.Initialize();
+            base.Initialize();
+            this.InitializeComponent();
         }
     }
 }

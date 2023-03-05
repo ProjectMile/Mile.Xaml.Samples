@@ -28,7 +28,7 @@
 
     <!-- Undocumented -->
     <!-- If the guid contains 'A5A43C5B...', the project will be a Single-project MSIX packaging project -->
-    <!-- If you want don't want to package AppX/MSIX, remeber final output is located in '%OutputPath%\ilc'
+    <!-- If you don't want to package AppX/MSIX, remeber final output is located in '%OutputPath%\ilc'
          - set UseDotNetNativeSharedAssemblyFrameworkPackage = true
          - add activatableClass nodes in ApplicationManifest
          - copy FrameworkDLL(mrt100_app.dll), UCRT(vcruntime140_app.dll), etc...
