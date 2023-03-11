@@ -16,8 +16,8 @@ int WINAPI wWinMain(
 
     winrt::init_apartment(winrt::apartment_type::single_threaded);
 
-    winrt::MileXamlControlsDemo::App app =
-        winrt::make<winrt::MileXamlControlsDemo::implementation::App>();
+    winrt::com_ptr<winrt::MileXamlControlsDemo::implementation::App> app =
+        winrt::make_self<winrt::MileXamlControlsDemo::implementation::App>();
 
     winrt::MileXamlControlsDemo::MainPage XamlWindowContent =
         winrt::make<winrt::MileXamlControlsDemo::implementation::MainPage>();
@@ -63,7 +63,7 @@ int WINAPI wWinMain(
         ::DispatchMessageW(&Message);
     }
 
-    app.Close();
+    app->Close();
 
     return static_cast<int>(Message.wParam);
 }

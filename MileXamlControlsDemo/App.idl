@@ -1,8 +1,4 @@
 ﻿namespace MileXamlControlsDemo
 {
-    [default_interface]
-    runtimeclass App : Mile.Xaml.Application
-    {
-        App();
-    }
+
 }

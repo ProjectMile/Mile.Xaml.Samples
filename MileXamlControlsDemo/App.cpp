@@ -1,7 +1,6 @@
 ﻿#include "pch.h"
 
 #include "App.h"
-#include "App.g.cpp"
 #include "MainPage.h"
 
 using namespace winrt;
@@ -14,10 +13,18 @@ using namespace Windows::UI::Xaml::Navigation;
 using namespace MileXamlControlsDemo;
 using namespace MileXamlControlsDemo::implementation;
 
+#include <Mile.Xaml.h>
+
 namespace winrt::MileXamlControlsDemo::implementation
 {
     App::App()
     {
-        Initialize();
+        ::MileXamlGlobalInitialize();
+    }
+
+    void App::Close()
+    {
+        Exit();
+        ::MileXamlGlobalUninitialize();
     }
 }
