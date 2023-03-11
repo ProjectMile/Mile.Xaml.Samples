@@ -59,7 +59,8 @@ namespace MileXamlBlankAppNetFrameworkModern
                 DispatchMessage(&msg);
             }
 
-            app.Dispose();
+            app.Close();
+
             return (int)msg.wParam.Value;
         }
     }
