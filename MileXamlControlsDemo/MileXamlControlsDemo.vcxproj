@@ -34,6 +34,9 @@
   <ImportGroup Label="PropertySheets">
     <Import Project="PropertySheet.props" />
   </ImportGroup>
+  <PropertyGroup>
+    <OutDir>$(MileProjectBinariesPath)$(Configuration)\$(Platform)\$(ProjectName)</OutDir>
+  </PropertyGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
     <ClInclude Include="App.h">
