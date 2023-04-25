@@ -1,26 +1,23 @@
-﻿using System.Runtime.InteropServices;
-using Windows.UI.Xaml;
+﻿using Windows.UI.Xaml;
+using Windows.UI.Xaml.Hosting;
 
 namespace MileXamlBlankAppNetFrameworkModern
 {
     sealed partial class App : Application
     {
-        [DllImport("Mile.Xaml.dll", PreserveSig = false)]
-        static extern void MileXamlGlobalInitialize();
-
-        [DllImport("Mile.Xaml.dll", PreserveSig = false)]
-        static extern void MileXamlGlobalUninitialize();
+        WindowsXamlManager windowsXamlManager = null;
 
         public App()
         {
-            MileXamlGlobalInitialize();
+            this.windowsXamlManager = WindowsXamlManager.InitializeForCurrentThread();
             this.InitializeComponent();
         }
 
         public void Close()
         {
             this.Exit();
-            MileXamlGlobalUninitialize();
+            this.windowsXamlManager.Dispose();
+            this.windowsXamlManager = null;
         }
     }
 }
