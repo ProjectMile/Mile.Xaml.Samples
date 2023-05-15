@@ -11,7 +11,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Mile.Xaml" Version="2.0.591-preview" />
+    <PackageReference Include="Mile.Xaml" Version="2.0.611" />
   </ItemGroup>
 
 </Project>
