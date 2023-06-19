@@ -7,8 +7,8 @@ using namespace Windows::UI::Xaml;
 
 namespace winrt::MileXamlControlsDemo::implementation
 {
-    MainPage::MainPage()
+    void MainPage::InitializeComponent()
     {
-        InitializeComponent();
+        MainPageT::InitializeComponent();
     }
 }

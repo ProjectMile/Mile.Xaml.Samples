@@ -6,7 +6,9 @@ namespace winrt::MileXamlBlankApp::implementation
 {
     struct MainPage : MainPageT<MainPage>
     {
-        MainPage();
+        MainPage() = default;
+
+        void InitializeComponent();
 
         int32_t MyProperty();
         void MyProperty(int32_t value);

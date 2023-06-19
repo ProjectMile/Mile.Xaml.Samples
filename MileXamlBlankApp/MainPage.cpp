@@ -7,9 +7,9 @@ using namespace Windows::UI::Xaml;
 
 namespace winrt::MileXamlBlankApp::implementation
 {
-    MainPage::MainPage()
+    void MainPage::InitializeComponent()
     {
-        InitializeComponent();
+        MainPageT::InitializeComponent();
     }
 
     int32_t MainPage::MyProperty()
