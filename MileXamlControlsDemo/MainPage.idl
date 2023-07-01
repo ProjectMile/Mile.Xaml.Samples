@@ -1,8 +1,15 @@
+﻿import "TreeViewItemModel.idl";
+
 namespace MileXamlControlsDemo
 {
     [default_interface]
     runtimeclass MainPage : Windows.UI.Xaml.Controls.Page
     {
         MainPage();
+
+        void HyperlinkButton_Click(Object sender, Windows.UI.Xaml.RoutedEventArgs args);
+        void HyperlinkButton_Click1(Object sender, Windows.UI.Xaml.RoutedEventArgs args);
+
+        Windows.Foundation.Collections.IObservableVector<TreeViewItemModel> TreeViewDataList { get; set; };
     }
 }

@@ -1,0 +1,15 @@
+﻿namespace MileXamlControlsDemo
+{
+    [bindable]
+    [default_interface]
+    runtimeclass TreeViewItemModel
+    {
+        TreeViewItemModel();
+
+        Boolean IsSelected{ get; set; };
+
+        String Name{ get; set; };
+
+        Windows.Foundation.Collections.IObservableVector<TreeViewItemModel> ChildrenNode { get; set; };
+    }
+}
