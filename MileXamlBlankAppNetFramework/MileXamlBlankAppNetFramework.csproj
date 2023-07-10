@@ -8,10 +8,32 @@
     <LangVersion>latest</LangVersion>
     <ApplicationManifest>App.manifest</ApplicationManifest>
     <UseWindowsForms>true</UseWindowsForms>
+    <EnableMsixTooling>true</EnableMsixTooling>
+    <WindowsPackageType>MSIX</WindowsPackageType>
   </PropertyGroup>
-
+  
   <ItemGroup>
     <PackageReference Include="Mile.Xaml" Version="2.1.661" />
+  </ItemGroup>
+
+  <PropertyGroup Condition="'$(EnableMsixTooling)' == 'true'">
+    <WindowsAppSDKFrameworkPackageReference>false</WindowsAppSDKFrameworkPackageReference>
+    <CustomBeforeMicrosoftCommonTargets>
+      $(CustomBeforeMicrosoftCommonTargets);
+      $(PkgMicrosoft_WindowsAppSDK)\build\Microsoft.Build.Msix.props
+    </CustomBeforeMicrosoftCommonTargets>
+    <CustomAfterMicrosoftCommonTargets>
+      $(CustomAfterMicrosoftCommonTargets);
+      $(PkgMicrosoft_WindowsAppSDK)\build\Microsoft.Build.Msix.targets
+    </CustomAfterMicrosoftCommonTargets>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(EnableMsixTooling)' == 'true'">
+    <ProjectCapability Include="Msix" />
+    <AvailableItemName Include="AppxManifest;PRIResource" />
+    <AppxManifest Include="Package.appxmanifest" SubType="Designer" />
+    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="$([System.Version]::Parse('$(TargetPlatformVersion)').ToString(3)).*" />
+    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.3.*" IncludeAssets="none" ExcludeAssets="all" PrivateAssets="all" GeneratePathProperty="true" />
   </ItemGroup>
 
 </Project>
