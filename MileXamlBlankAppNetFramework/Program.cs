@@ -9,10 +9,11 @@ namespace MileXamlBlankAppNetFrameworkModern
         [STAThread]
         static void Main()
         {
-            App app = new();
-
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+            App app = new();
+
             Application.Run(new Form1());
 
             app.Close();
