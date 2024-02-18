@@ -11,19 +11,6 @@
     <DefaultXamlRuntime>UAP</DefaultXamlRuntime>
     <MileXamlEnableIntelliSenseForDotNet>false</MileXamlEnableIntelliSenseForDotNet>
   </PropertyGroup>
-
-  <!-- Enable Xaml IntelliSense -->
-  <PropertyGroup>
-    <TargetPlatformIdentifier>Windows</TargetPlatformIdentifier>
-    <TargetPlatformMoniker>Windows,Version=$(TargetPlatformVersion)</TargetPlatformMoniker>
-    <TargetPlatformDisplayName>$([Microsoft.Build.Utilities.ToolLocationHelper]::GetPlatformSDKDisplayName('Windows', $(TargetPlatformVersion)))</TargetPlatformDisplayName>
-    <SupportedOSPlatformVersion>$(TargetPlatformMinVersion)</SupportedOSPlatformVersion>
-  </PropertyGroup>
-  <Target Name="RestoreTargetPlatformIdentifier" BeforeTargets="BeforeBuild">
-    <PropertyGroup>
-      <TargetPlatformIdentifier>Windows</TargetPlatformIdentifier>
-    </PropertyGroup>
-  </Target>
   
   <ItemGroup>
     <PackageReference Include="Mile.Xaml" Version="2.1.661" />
