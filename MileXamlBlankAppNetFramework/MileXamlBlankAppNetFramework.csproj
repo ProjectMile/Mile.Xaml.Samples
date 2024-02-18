@@ -8,6 +8,8 @@
     <LangVersion>latest</LangVersion>
     <ApplicationManifest>App.manifest</ApplicationManifest>
     <UseWindowsForms>true</UseWindowsForms>
+    <!-- Add workaround for WinRT support in the old .NET SDK -->
+    <SupportedOSPlatformVersion>$(TargetPlatformMinVersion)</SupportedOSPlatformVersion>
     <DefaultXamlRuntime>UAP</DefaultXamlRuntime>
     <MileXamlEnableIntelliSenseForDotNet>false</MileXamlEnableIntelliSenseForDotNet>
   </PropertyGroup>
