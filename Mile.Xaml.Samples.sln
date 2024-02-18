@@ -9,6 +9,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MileXamlControlsDemo", "Mil
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MileXamlBlankAppNetFramework", "MileXamlBlankAppNetFramework\MileXamlBlankAppNetFramework.csproj", "{58DCE199-78EF-4D81-A632-10B4C93E02FB}"
 EndProject
+Project("{C7167F0D-BC9F-4E6E-AFE1-012C56B48DB5}") = "MileXamlBlankAppNetFrameworkPackage", "MileXamlBlankAppNetFrameworkPackage\MileXamlBlankAppNetFrameworkPackage.wapproj", "{73F2781A-8EC6-40FB-AD81-7DFE9CC94F3C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|ARM64 = Debug|ARM64
@@ -53,6 +55,16 @@ Global
 		{58DCE199-78EF-4D81-A632-10B4C93E02FB}.Release|x64.Build.0 = Release|Any CPU
 		{58DCE199-78EF-4D81-A632-10B4C93E02FB}.Release|x64.Deploy.0 = Release|Any CPU
 		{58DCE199-78EF-4D81-A632-10B4C93E02FB}.Release|x86.ActiveCfg = Release|Any CPU
+		{73F2781A-8EC6-40FB-AD81-7DFE9CC94F3C}.Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{73F2781A-8EC6-40FB-AD81-7DFE9CC94F3C}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{73F2781A-8EC6-40FB-AD81-7DFE9CC94F3C}.Debug|x64.Build.0 = Debug|Any CPU
+		{73F2781A-8EC6-40FB-AD81-7DFE9CC94F3C}.Debug|x64.Deploy.0 = Debug|Any CPU
+		{73F2781A-8EC6-40FB-AD81-7DFE9CC94F3C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{73F2781A-8EC6-40FB-AD81-7DFE9CC94F3C}.Release|ARM64.ActiveCfg = Release|Any CPU
+		{73F2781A-8EC6-40FB-AD81-7DFE9CC94F3C}.Release|x64.ActiveCfg = Release|Any CPU
+		{73F2781A-8EC6-40FB-AD81-7DFE9CC94F3C}.Release|x64.Build.0 = Release|Any CPU
+		{73F2781A-8EC6-40FB-AD81-7DFE9CC94F3C}.Release|x64.Deploy.0 = Release|Any CPU
+		{73F2781A-8EC6-40FB-AD81-7DFE9CC94F3C}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

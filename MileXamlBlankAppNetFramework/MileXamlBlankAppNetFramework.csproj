@@ -8,15 +8,31 @@
     <LangVersion>latest</LangVersion>
     <ApplicationManifest>App.manifest</ApplicationManifest>
     <UseWindowsForms>true</UseWindowsForms>
-    <EnableMsixTooling>true</EnableMsixTooling>
-    <WindowsPackageType>MSIX</WindowsPackageType>
+    <!--<EnableMsixTooling>true</EnableMsixTooling>-->
+    <!--<WindowsPackageType>MSIX</WindowsPackageType>-->
+
+    <DefaultXamlRuntime>UAP</DefaultXamlRuntime>
+    <MileXamlEnableIntelliSenseForDotNet>false</MileXamlEnableIntelliSenseForDotNet>
   </PropertyGroup>
+
+  <!-- Enable Xaml IntelliSense -->
+  <PropertyGroup>
+    <TargetPlatformIdentifier>Windows</TargetPlatformIdentifier>
+    <TargetPlatformMoniker>Windows,Version=$(TargetPlatformVersion)</TargetPlatformMoniker>
+    <TargetPlatformDisplayName>$([Microsoft.Build.Utilities.ToolLocationHelper]::GetPlatformSDKDisplayName('Windows', $(TargetPlatformVersion)))</TargetPlatformDisplayName>
+    <SupportedOSPlatformVersion>$(TargetPlatformMinVersion)</SupportedOSPlatformVersion>
+  </PropertyGroup>
+  <Target Name="RestoreTargetPlatformIdentifier" BeforeTargets="BeforeBuild">
+    <PropertyGroup>
+      <TargetPlatformIdentifier>Windows</TargetPlatformIdentifier>
+    </PropertyGroup>
+  </Target>
   
   <ItemGroup>
     <PackageReference Include="Mile.Xaml" Version="2.1.661" />
   </ItemGroup>
 
-  <PropertyGroup Condition="'$(EnableMsixTooling)' == 'true'">
+  <!--<PropertyGroup Condition="'$(EnableMsixTooling)' == 'true'">
     <WindowsAppSDKFrameworkPackageReference>false</WindowsAppSDKFrameworkPackageReference>
     <CustomBeforeMicrosoftCommonTargets>
       $(CustomBeforeMicrosoftCommonTargets);
@@ -34,6 +50,6 @@
     <AppxManifest Include="Package.appxmanifest" SubType="Designer" />
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="$([System.Version]::Parse('$(TargetPlatformVersion)').ToString(3)).*" />
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.3.*" IncludeAssets="none" ExcludeAssets="all" PrivateAssets="all" GeneratePathProperty="true" />
-  </ItemGroup>
+  </ItemGroup>-->
 
 </Project>
