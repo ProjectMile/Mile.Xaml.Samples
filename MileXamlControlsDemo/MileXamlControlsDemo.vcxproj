@@ -37,6 +37,11 @@
   <PropertyGroup>
     <OutDir>$(MileProjectBinariesPath)$(Configuration)\$(Platform)\$(ProjectName)\</OutDir>
   </PropertyGroup>
+  <ItemDefinitionGroup>
+    <Link>
+      <AdditionalDependencies>runtimeobject.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
     <ClInclude Include="App.h">
