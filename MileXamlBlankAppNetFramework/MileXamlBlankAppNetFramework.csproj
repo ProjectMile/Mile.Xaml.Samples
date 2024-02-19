@@ -10,12 +10,10 @@
     <UseWindowsForms>true</UseWindowsForms>
     <!-- Add workaround for WinRT support in the old .NET SDK -->
     <SupportedOSPlatformVersion>$(TargetPlatformMinVersion)</SupportedOSPlatformVersion>
-    <DefaultXamlRuntime>UAP</DefaultXamlRuntime>
-    <MileXamlEnableIntelliSenseForDotNet>false</MileXamlEnableIntelliSenseForDotNet>
   </PropertyGroup>
   
   <ItemGroup>
-    <PackageReference Include="Mile.Xaml" Version="2.1.661" />
+    <PackageReference Include="Mile.Xaml" Version="2.2.890" />
   </ItemGroup>
 
 </Project>
