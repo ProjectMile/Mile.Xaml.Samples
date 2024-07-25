@@ -4,16 +4,70 @@
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  Loaded="OnLoaded"
+  ActualThemeChanged="OnActualThemeChanged"
   mc:Ignorable="d">
   <Page.Content>
     <Grid
-      HorizontalAlignment="Center"
-      VerticalAlignment="Center">
-      <Grid.Children>
-        <Button
-          Content="Click Me"
-          Click="Button_Click" />
-      </Grid.Children>
+        HorizontalAlignment="Center"
+        VerticalAlignment="Center"
+        ColumnSpacing="10"
+        RowSpacing="10">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+      </Grid.RowDefinitions>
+
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="*" />
+      </Grid.ColumnDefinitions>
+
+      <StackPanel
+            Grid.Row="0"
+            Grid.Column="0"
+            Orientation="Horizontal">
+
+        <TextBlock Text="Current SystemBackdrop: " />
+        <TextBlock x:Name="SystemBackdropNameText" />
+      </StackPanel>
+
+      <Button
+            Grid.Row="0"
+            Grid.Column="1"
+            Click="SwitchSystemBackdropClick"
+            Content="Switch SystemBackdrop" />
+
+      <StackPanel
+            Grid.Row="1"
+            Grid.Column="0"
+            Orientation="Horizontal">
+
+        <TextBlock Text="Current Theme: " />
+        <TextBlock x:Name="ThemeNameText" />
+      </StackPanel>
+
+      <Button
+            Grid.Row="1"
+            Grid.Column="1"
+            Click="SwitchThemeClick"
+            Content="Switch Theme" />
+
+      <StackPanel
+            Grid.Row="2"
+            Grid.Column="0"
+            Orientation="Horizontal">
+
+        <TextBlock Text="Current InputActive State: " />
+        <TextBlock x:Name="InputActiveStateText" />
+      </StackPanel>
+
+      <Button
+            Grid.Row="2"
+            Grid.Column="1"
+            Click="SwitchInputActiveStateClick"
+            Content="Switch InputActive State" />
     </Grid>
   </Page.Content>
 </Page>
