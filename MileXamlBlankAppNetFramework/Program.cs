@@ -6,15 +6,18 @@ namespace MileXamlBlankAppNetFrameworkModern
 {
     public static class Program
     {
+        public static Form MainForm { get; private set; }
+
         [STAThread]
-        static void Main()
+        private static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
             App app = new();
 
-            Application.Run(new Form1());
+            MainForm = new Form1();
+            Application.Run(MainForm);
 
             app.Close();
         }
