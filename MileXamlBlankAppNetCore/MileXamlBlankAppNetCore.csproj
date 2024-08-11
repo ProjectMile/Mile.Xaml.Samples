@@ -1,0 +1,40 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net8.0-windows10.0.22621.0</TargetFramework>
+		<TargetPlatformVersion>10.0.22621.0</TargetPlatformVersion>
+		<TargetPlatformMinVersion>10.0.19041.0</TargetPlatformMinVersion>
+		<LangVersion>latest</LangVersion>
+		<ApplicationManifest>App.manifest</ApplicationManifest>
+		<UseWindowsForms>true</UseWindowsForms>
+		<PublishAot>true</PublishAot>
+		<WindowsSdkPackageVersion>10.0.22621.39</WindowsSdkPackageVersion>
+		<RuntimeIdentifiers>win-x86;win-x64;win-arm64</RuntimeIdentifiers>
+		<ProjectPriFileName>resources.pri</ProjectPriFileName>
+		<_SuppressWinFormsTrimError>true</_SuppressWinFormsTrimError>
+	</PropertyGroup>
+
+	<!-- Temporary workaround, remove when https://github.com/dotnet/sdk/pull/41936 is available in the .NET SDK -->
+	<ItemGroup>
+		<CompilerVisibleProperty Include="CsWinRTUseWindowsUIXamlProjections" />
+		<RuntimeHostConfigurationOption Include="CSWINRT_USE_WINDOWS_UI_XAML_PROJECTIONS" Value="$(CsWinRTUseWindowsUIXamlProjections)" Trim="true" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="DisposableMemory.ModernNetUAP.XamlCompiler" Version="0.2.1" />
+		<PackageReference Include="Microsoft.Windows.CsWinRT" Version="2.1.1" />
+		<PackageReference Include="Mile.Xaml" Version="2.3.1064" />
+	</ItemGroup>
+
+	<!-- Add resources.pri to publish output -->
+	<Target Name="AddPriFileToPublishOutput" AfterTargets="ComputeResolvedFilesToPublishList">
+		<ItemGroup>
+			<ResolvedFileToPublish Include="$(OutDir)$(ProjectPriFileName)">
+				<RelativePath>$(ProjectPriFileName)</RelativePath>
+				<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+			</ResolvedFileToPublish>
+		</ItemGroup>
+	</Target>
+
+</Project>
