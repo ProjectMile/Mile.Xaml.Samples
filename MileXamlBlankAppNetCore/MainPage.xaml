@@ -1,0 +1,27 @@
+﻿<wuxc:Page
+    x:Class="MileXamlBlankAppNetCore.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="using:MileXamlBlankAppNetCore"    
+    xmlns:wux="using:Windows.UI.Xaml"
+    xmlns:wuxc="using:Windows.UI.Xaml.Controls"
+    xmlns:wuxd="using:Windows.UI.Xaml.Documents"
+    mc:Ignorable="d"
+    Background="{StaticResource ControlFillColorDefaultBrush}">
+  
+  <!--
+       Due to issues in Visual Studio, XAML Intellisense with WUX/.NET 8 only works
+       when all namespaces are declared by hand, including Windows.UI.Xaml.*
+  -->  
+  <wuxc:StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+    <wuxc:TextBlock Text="Mile.Xaml ❤ .NET 8"  Style="{StaticResource DisplayTextBlockStyle}"/>
+    <wuxc:TextBlock Text="{x:Bind FrameworkDescription}"/>
+    <wuxc:TextBlock>
+      <wuxd:Run>IsDynamicCodeSupported:</wuxd:Run>
+      <wuxd:Run Text="{x:Bind IsDynamicCodeSupported}"/>
+    </wuxc:TextBlock>
+    <wuxc:Button Click="Button_Click">Click Me</wuxc:Button>
+  </wuxc:StackPanel>
+</wuxc:Page>
