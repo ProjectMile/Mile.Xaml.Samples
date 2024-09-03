@@ -33,7 +33,7 @@
     <TargetPlatformMinVersion>10.0.19041.0</TargetPlatformMinVersion>
     <DefaultLanguage>en</DefaultLanguage>
     <AppxPackageSigningEnabled>false</AppxPackageSigningEnabled>
-    <EntryPointProjectUniqueName>..\MileXamlBlankAppNetFramework\MileXamlBlankAppNetFramework.csproj</EntryPointProjectUniqueName>
+    <EntryPointProjectUniqueName>..\MileXamlBlankAppNetCore\MileXamlBlankAppNetCore.csproj</EntryPointProjectUniqueName>
     <DebuggerType>Mixed</DebuggerType>
   </PropertyGroup>
   <ItemGroup>
@@ -51,7 +51,7 @@
     <Content Include="Images\Wide310x150Logo.scale-200.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MileXamlBlankAppNetFramework\MileXamlBlankAppNetFramework.csproj" />
+    <ProjectReference Include="..\MileXamlBlankAppNetCore\MileXamlBlankAppNetCore.csproj" />
   </ItemGroup>
   <Import Project="..\Mile.Project.Windows\Mile.Project.Wap.targets" />
 </Project>

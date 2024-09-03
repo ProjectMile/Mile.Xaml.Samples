@@ -1,6 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
+    <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
 		<OutputType>WinExe</OutputType>
 		<TargetFramework>net8.0-windows10.0.22621.0</TargetFramework>
 		<TargetPlatformVersion>10.0.22621.0</TargetPlatformVersion>
@@ -9,11 +10,20 @@
 		<ApplicationManifest>App.manifest</ApplicationManifest>
 		<UseWindowsForms>true</UseWindowsForms>
 		<PublishAot>true</PublishAot>
-		<WindowsSdkPackageVersion>10.0.22621.39</WindowsSdkPackageVersion>
+		<WindowsSdkPackageVersion>10.0.22621.42</WindowsSdkPackageVersion>
 		<RuntimeIdentifiers>win-x86;win-x64;win-arm64</RuntimeIdentifiers>
 		<ProjectPriFileName>resources.pri</ProjectPriFileName>
 		<_SuppressWinFormsTrimError>true</_SuppressWinFormsTrimError>
+		<Platforms>x64;ARM64;x86</Platforms>
 	</PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="Resources\NoiseAsset_256x256_PNG.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Resources\NoiseAsset_256x256_PNG.png" />
+  </ItemGroup>
 
 	<!-- Temporary workaround, remove when https://github.com/dotnet/sdk/pull/41936 is available in the .NET SDK -->
 	<ItemGroup>
@@ -22,9 +32,27 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="DisposableMemory.ModernNetUAP.XamlCompiler" Version="0.2.1" />
+		<PackageReference Include="DisposableMemory.ModernNetUAP.XamlCompiler" Version="0.2.2" />
 		<PackageReference Include="Microsoft.Windows.CsWinRT" Version="2.1.1" />
 		<PackageReference Include="Mile.Xaml" Version="2.3.1064" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Resource.Designer.cs">
+	    <DependentUpon>Resource.resx</DependentUpon>
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	  </Compile>
+
+    <None Remove="MainPage.xaml" />
+    <Page Update="MainPage.xaml" XamlRuntime="$(DefaultXamlRuntime)" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Update="Resource.resx">
+	    <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+	    <Generator>PublicResXFileCodeGenerator</Generator>
+	  </EmbeddedResource>
 	</ItemGroup>
 
 	<!-- Add resources.pri to publish output -->
