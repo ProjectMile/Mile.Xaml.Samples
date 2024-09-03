@@ -11,14 +11,6 @@
     <!-- Add workaround for WinRT support in the old .NET SDK -->
     <SupportedOSPlatformVersion>$(TargetPlatformMinVersion)</SupportedOSPlatformVersion>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Content Remove="Resources\NoiseAsset_256x256_PNG.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="Resources\NoiseAsset_256x256_PNG.png" />
-  </ItemGroup>
   
   <ItemGroup>
     <PackageReference Include="Microsoft.Windows.SDK.Contracts" Version="10.0.26100.1" />
@@ -27,18 +19,9 @@
   </ItemGroup>
   
   <ItemGroup>
-    <Compile Update="Resource.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resource.resx</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  
-  <ItemGroup>
-    <EmbeddedResource Update="Resource.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
+    <Content Update="Resources\NoiseAsset_256x256_PNG.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>
