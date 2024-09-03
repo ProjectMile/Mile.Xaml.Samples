@@ -1,12 +1,13 @@
 ﻿using Microsoft.Win32;
-using MileXamlBlankAppNetFrameworkModern.WindowsAPI.PInvoke.Comctl32;
-using MileXamlBlankAppNetFrameworkModern.WindowsAPI.PInvoke.Kernel32;
-using MileXamlBlankAppNetFrameworkModern.WindowsAPI.PInvoke.User32;
+using MileXamlBlankAppNetCoreModern.WindowsAPI.PInvoke.Comctl32;
+using MileXamlBlankAppNetCoreModern.WindowsAPI.PInvoke.Kernel32;
+using MileXamlBlankAppNetCoreModern.WindowsAPI.PInvoke.User32;
 using System;
-using System.Drawing.Imaging;
+using System.Collections.Generic;
 using System.IO;
 using System.Numerics;
 using System.Runtime.InteropServices;
+using System.Threading;
 using System.Windows.Forms;
 using Windows.UI;
 using Windows.UI.Composition;
@@ -14,9 +15,9 @@ using Windows.UI.Composition.Desktop;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Media;
 
-namespace MileXamlBlankAppNetFrameworkModern.UI.Backdrop
+namespace MileXamlBlankAppNetCoreModern.UI.Backdrop
 {
-    public class DesktopAcrylicBackdrop : SystemBackdrop
+    public sealed partial class DesktopAcrylicBackdrop : SystemBackdrop
     {
         private const int PBT_POWERSETTINGCHANGE = 0x8013;
 
@@ -32,6 +33,7 @@ namespace MileXamlBlankAppNetFrameworkModern.UI.Backdrop
         private readonly Form formRoot;
         private readonly FrameworkElement rootElement;
         private readonly CompositionCapabilities compositionCapabilities = CompositionCapabilities.GetForCurrentView();
+        private readonly SynchronizationContext synchronizationContext = SynchronizationContext.Current;
 
         private readonly float defaultDesktopAcrylicDefaultLightTintOpacity = 0;
         private readonly float defaultDesktopAcrylicDefaultLightLuminosityOpacity = 0.85f;
@@ -77,7 +79,7 @@ namespace MileXamlBlankAppNetFrameworkModern.UI.Backdrop
                     _lightTintOpacity = value;
                     if (value < 0 || value > 1)
                     {
-                        throw new ArgumentException("Value must between 0 to 1");
+                        throw new ArgumentException("值必须在 0 到 1 之间");
                     }
 
                     UpdateBrush();
@@ -98,7 +100,7 @@ namespace MileXamlBlankAppNetFrameworkModern.UI.Backdrop
                     _lightLuminosityOpacity = value;
                     if (value < 0 || value > 1)
                     {
-                        throw new ArgumentException("Value must between 0 to 1");
+                        throw new ArgumentException("值必须在 0 到 1 之间");
                     }
 
                     UpdateBrush();
@@ -119,7 +121,7 @@ namespace MileXamlBlankAppNetFrameworkModern.UI.Backdrop
                     _darkTintOpacity = value;
                     if (value < 0 || value > 1)
                     {
-                        throw new ArgumentException("Value must between 0 to 1");
+                        throw new ArgumentException("值必须在 0 到 1 之间");
                     }
 
                     UpdateBrush();
@@ -140,7 +142,7 @@ namespace MileXamlBlankAppNetFrameworkModern.UI.Backdrop
                     _darkLuminosityOpacity = value;
                     if (value < 0 || value > 1)
                     {
-                        throw new ArgumentException("Value must between 0 to 1");
+                        throw new ArgumentException("值必须在 0 到 1 之间");
                     }
 
                     UpdateBrush();
@@ -275,25 +277,15 @@ namespace MileXamlBlankAppNetFrameworkModern.UI.Backdrop
             }
         }
 
-        public override bool IsSupported
+        public static bool IsSupported
         {
             get
             {
-                RegistryKey key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Wallpaper");
-                if (key is not null)
-                {
-                    object value = key.GetValue("WallpaperSurfaceProvidedToDwm");
-                    if (value is not null && Convert.ToInt32(value) is 1)
-                    {
-                        return true;
-                    }
-                }
-
-                return false;
+                return Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Wallpaper") is RegistryKey key && key.GetValue("WallpaperSurfaceProvidedToDwm") is object value && Convert.ToInt32(value) is 1;
             }
         }
 
-        public bool IsHostBackdropSupported
+        public static bool IsHostBackdropSupported
         {
             get { return Environment.OSVersion.Version >= new Version(10, 0, 22000, 0); }
         }
@@ -302,16 +294,21 @@ namespace MileXamlBlankAppNetFrameworkModern.UI.Backdrop
         {
             if (target is null)
             {
-                throw new ArgumentNullException(string.Format("Parameter {0} can not be null", nameof(target)));
+                throw new ArgumentNullException(string.Format("参数 {0} 不可以为空值", nameof(target)));
             }
 
             if (form is null)
             {
-                throw new ArgumentNullException(string.Format("\"Parameter {0} can not be null", nameof(element)));
+                throw new ArgumentNullException(string.Format("参数 {0} 不可以为空值", nameof(element)));
             }
 
             formRoot = form;
             rootElement = element;
+        }
+
+        ~DesktopAcrylicBackdrop()
+        {
+            Dispose(false);
         }
 
         public override void InitializeBackdrop()
@@ -374,7 +371,7 @@ namespace MileXamlBlankAppNetFrameworkModern.UI.Backdrop
                 }
 
                 formSubClassProc = new SUBCLASSPROC(OnFormSubClassProc);
-                Comctl32Library.SetWindowSubclass(formRoot.Handle, formSubClassProc, 0, IntPtr.Zero);
+                Comctl32Library.SetWindowSubclass(formRoot.Handle, Marshal.GetFunctionPointerForDelegate(formSubClassProc), 0, IntPtr.Zero);
 
                 IntPtr hPowerNotify = User32Library.RegisterPowerSettingNotification(formRoot.Handle, ref GUID_POWER_SAVING_STATUS, 0);
 
@@ -432,64 +429,79 @@ namespace MileXamlBlankAppNetFrameworkModern.UI.Backdrop
 
         public override void Dispose()
         {
-            if (isInitialized)
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        private void Dispose(bool disposing)
+        {
+            if (!disposing)
             {
-                isInitialized = false;
+                return;
+            }
 
-                SystemEvents.UserPreferenceChanged -= OnUserPreferenceChanged;
-                formRoot.SizeChanged -= OnSizeChanged;
-                formRoot.DpiChanged -= OnDpiChanged;
-                formRoot.FormClosed -= OnFormClosed;
-                formRoot.Activated -= OnActivated;
-                formRoot.Deactivate -= OnDeactivated;
-                compositionCapabilities.Changed -= OnCompositionCapabilitiesChanged;
-
-                if (rootElement is not null)
+            lock (this)
+            {
+                if (isInitialized)
                 {
-                    rootElement.ActualThemeChanged -= OnActualThemeChanged;
-                }
+                    isInitialized = false;
 
-                if (hPowerNotify != IntPtr.Zero)
-                {
-                    User32Library.UnregisterPowerSettingNotification(hPowerNotify);
-                    hPowerNotify = IntPtr.Zero;
-                }
+                    SystemEvents.UserPreferenceChanged -= OnUserPreferenceChanged;
+                    formRoot.SizeChanged -= OnSizeChanged;
+                    formRoot.DpiChanged -= OnDpiChanged;
+                    formRoot.FormClosed -= OnFormClosed;
+                    formRoot.Activated -= OnActivated;
+                    formRoot.Deactivate -= OnDeactivated;
+                    compositionCapabilities.Changed -= OnCompositionCapabilitiesChanged;
 
-                if (DesktopWindowTarget.Root as SpriteVisual is not null && (DesktopWindowTarget.Root as SpriteVisual).Brush is not null)
-                {
-                    (DesktopWindowTarget.Root as SpriteVisual).Brush.Dispose();
-                    (DesktopWindowTarget.Root as SpriteVisual).Brush = null;
+                    if (rootElement is not null)
+                    {
+                        rootElement.ActualThemeChanged -= OnActualThemeChanged;
+                    }
+
+                    if (hPowerNotify != IntPtr.Zero)
+                    {
+                        User32Library.UnregisterPowerSettingNotification(hPowerNotify);
+                        hPowerNotify = IntPtr.Zero;
+                    }
+
+                    if (DesktopWindowTarget.Root is SpriteVisual spriteVisual && spriteVisual.Brush is not null)
+                    {
+                        spriteVisual.Brush.Dispose();
+                        spriteVisual.Brush = null;
+                    }
                 }
             }
         }
 
         private void OnUserPreferenceChanged(object sender, UserPreferenceChangedEventArgs args)
         {
-            formRoot.BeginInvoke(UpdateBrush);
+            synchronizationContext.Post(_ =>
+            {
+                UpdateBrush();
+            }, null);
         }
 
         private void OnSizeChanged(object sender, EventArgs args)
         {
-            formRoot.BeginInvoke(() =>
+            synchronizationContext.Post(_ =>
             {
-                SpriteVisual spriteVisual = DesktopWindowTarget.Root as SpriteVisual;
-                if (spriteVisual is not null)
+                if (DesktopWindowTarget.Root is SpriteVisual spriteVisual)
                 {
                     spriteVisual.Size = new Vector2(formRoot.Width, formRoot.Height);
                 }
-            });
+            }, null);
         }
 
         private void OnDpiChanged(object sender, DpiChangedEventArgs args)
         {
-            formRoot.BeginInvoke(() =>
+            synchronizationContext.Post(_ =>
             {
-                SpriteVisual spriteVisual = DesktopWindowTarget.Root as SpriteVisual;
-                if (spriteVisual is not null)
+                if (DesktopWindowTarget.Root is SpriteVisual spriteVisual)
                 {
                     spriteVisual.Size = new Vector2(formRoot.Width, formRoot.Height);
                 }
-            });
+            }, null);
         }
 
         private void OnFormClosed(object sender, FormClosedEventArgs args)
@@ -515,7 +527,10 @@ namespace MileXamlBlankAppNetFrameworkModern.UI.Backdrop
 
         private void OnCompositionCapabilitiesChanged(CompositionCapabilities sender, object args)
         {
-            formRoot.BeginInvoke(UpdateBrush);
+            synchronizationContext.Post(_ =>
+            {
+                UpdateBrush();
+            }, null);
         }
 
         private void OnActualThemeChanged(FrameworkElement sender, object args)
@@ -563,7 +578,8 @@ namespace MileXamlBlankAppNetFrameworkModern.UI.Backdrop
                 if (SystemInformation.HighContrast)
                 {
                     System.Drawing.Color windowColor = System.Drawing.SystemColors.Window;
-                    tintColor = Color.FromArgb(windowColor.R, windowColor.A, windowColor.G, windowColor.B); useDesktopAcrylicBrush = false;
+                    tintColor = Color.FromArgb(windowColor.R, windowColor.A, windowColor.G, windowColor.B); // new UISettings().GetColorValue(UIColorType.Background)
+                    useDesktopAcrylicBrush = false;
                 }
 
                 Compositor compositor = DesktopWindowTarget.Compositor;
@@ -605,6 +621,7 @@ namespace MileXamlBlankAppNetFrameworkModern.UI.Backdrop
             Color convertedLuminosityColor = ColorConversion.GetEffectiveLuminosityColor(tintColor, tintOpacity, luminosityOpacity);
             Color convertedTintColor = ColorConversion.GetEffectiveTintColor(tintColor, tintOpacity, luminosityOpacity);
 
+            // Source 1 : Host backdrop layer effect
             ColorSourceEffect hostBackdropEffect = new()
             {
                 Color = Color.FromArgb(255, 0, 0, 0)
@@ -617,6 +634,7 @@ namespace MileXamlBlankAppNetFrameworkModern.UI.Backdrop
                 Source = hostBackdropEffect,
             };
 
+            // Source 2 : Tint color effect
             GaussianBlurEffect gaussianBlurEffect = new()
             {
                 Name = "GaussianBlurEffect",
@@ -656,6 +674,7 @@ namespace MileXamlBlankAppNetFrameworkModern.UI.Backdrop
                 Source = tintAndLuminosityColorEffect
             };
 
+            // Source 3: Tint color effect without alpha
             ColorSourceEffect tintColorEffectWithoutAlphaEffect = new()
             {
                 Name = "TintColorEffectWithoutAlpha",
@@ -669,6 +688,7 @@ namespace MileXamlBlankAppNetFrameworkModern.UI.Backdrop
                 Source = tintColorEffectWithoutAlphaEffect,
             };
 
+            // Source 4 : Noise border effect
             BorderEffect noiseBorderEffect = new()
             {
                 Source = new CompositionEffectSourceParameter("noise"),
@@ -712,13 +732,14 @@ namespace MileXamlBlankAppNetFrameworkModern.UI.Backdrop
         {
             CrossFadeEffect crossFadeEffect = new()
             {
-                Name = "Crossfade",
+                Name = "Crossfade", // Name to reference when starting the animation.
                 Source1 = new CompositionEffectSourceParameter("source1"),
                 Source2 = new CompositionEffectSourceParameter("source2"),
                 CrossFade = 0
             };
 
-            CompositionEffectBrush crossFadeEffectBrush = compositor.CreateEffectFactory(crossFadeEffect, ["Crossfade.CrossFade"]).CreateBrush();
+            List<string> crossfadeList = ["Crossfade.CrossFade"];
+            CompositionEffectBrush crossFadeEffectBrush = compositor.CreateEffectFactory(crossFadeEffect, crossfadeList).CreateBrush();
             crossFadeEffectBrush.Comment = "Crossfade";
 
             crossFadeEffectBrush.SetSourceParameter("source1", from);
@@ -740,7 +761,7 @@ namespace MileXamlBlankAppNetFrameworkModern.UI.Backdrop
         {
             if (Msg is WindowMessage.WM_POWERBROADCAST && (int)wParam is PBT_POWERSETTINGCHANGE)
             {
-                POWERBROADCAST_SETTING setting = (POWERBROADCAST_SETTING)Marshal.PtrToStructure(lParam, typeof(POWERBROADCAST_SETTING));
+                POWERBROADCAST_SETTING setting = Marshal.PtrToStructure<POWERBROADCAST_SETTING>(lParam);
 
                 if (setting.PowerSetting == GUID_POWER_SAVING_STATUS)
                 {
@@ -749,10 +770,10 @@ namespace MileXamlBlankAppNetFrameworkModern.UI.Backdrop
 
                     if (isInitialized)
                     {
-                        formRoot.BeginInvoke(() =>
+                        synchronizationContext.Post(_ =>
                         {
                             UpdateBrush();
-                        });
+                        }, null);
                     }
                 }
             }

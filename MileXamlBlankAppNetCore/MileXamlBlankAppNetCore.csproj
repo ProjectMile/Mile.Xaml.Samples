@@ -1,6 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
+    <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
 		<OutputType>WinExe</OutputType>
 		<TargetFramework>net8.0-windows10.0.22621.0</TargetFramework>
 		<TargetPlatformVersion>10.0.22621.0</TargetPlatformVersion>
@@ -25,6 +26,12 @@
 		<PackageReference Include="DisposableMemory.ModernNetUAP.XamlCompiler" Version="0.2.1" />
 		<PackageReference Include="Microsoft.Windows.CsWinRT" Version="2.1.1" />
 		<PackageReference Include="Mile.Xaml" Version="2.3.1064" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Update="Resources\NoiseAsset_256x256_PNG.png">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Content>
 	</ItemGroup>
 
 	<!-- Add resources.pri to publish output -->

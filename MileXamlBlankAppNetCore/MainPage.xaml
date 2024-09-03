@@ -3,25 +3,94 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:MileXamlBlankAppNetCore"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:local="using:MileXamlBlankAppNetCore"    
     xmlns:wux="using:Windows.UI.Xaml"
     xmlns:wuxc="using:Windows.UI.Xaml.Controls"
     xmlns:wuxd="using:Windows.UI.Xaml.Documents"
-    mc:Ignorable="d"
-    Background="{StaticResource ControlFillColorDefaultBrush}">
-  
-  <!--
-       Due to issues in Visual Studio, XAML Intellisense with WUX/.NET 8 only works
-       when all namespaces are declared by hand, including Windows.UI.Xaml.*
-  -->  
-  <wuxc:StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-    <wuxc:TextBlock Text="Mile.Xaml ❤ .NET 8"  Style="{StaticResource DisplayTextBlockStyle}"/>
-    <wuxc:TextBlock Text="{x:Bind FrameworkDescription}"/>
-    <wuxc:TextBlock>
-      <wuxd:Run>IsDynamicCodeSupported:</wuxd:Run>
-      <wuxd:Run Text="{x:Bind IsDynamicCodeSupported}"/>
-    </wuxc:TextBlock>
-    <wuxc:Button Click="Button_Click">Click Me</wuxc:Button>
-  </wuxc:StackPanel>
+    Loaded="OnLoaded"
+    mc:Ignorable="d">
+
+    <!--
+        Due to issues in Visual Studio, XAML Intellisense with WUX/.NET 8 only works
+        when all namespaces are declared by hand, including Windows.UI.Xaml.*
+    -->
+    <wuxc:StackPanel
+        HorizontalAlignment="Center"
+        VerticalAlignment="Center"
+        Orientation="Vertical">
+        <wuxc:TextBlock
+            Style="{StaticResource DisplayTextBlockStyle}"
+            Text="Mile.Xaml ❤ .NET 8"
+            TextAlignment="Center" />
+        <wuxc:TextBlock Text="{x:Bind FrameworkDescription}" TextAlignment="Center" />
+        <wuxc:TextBlock TextAlignment="Center">
+            <wuxd:Run>IsDynamicCodeSupported:</wuxd:Run>
+            <wuxd:Run Text="{x:Bind IsDynamicCodeSupported}" />
+        </wuxc:TextBlock>
+        <wuxc:Button HorizontalAlignment="Center" Click="Button_Click">Click Me</wuxc:Button>
+
+        <wuxc:Grid
+            Margin="0,20,0,0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            ColumnSpacing="10"
+            RowSpacing="10">
+            <wuxc:Grid.RowDefinitions>
+                <wuxc:RowDefinition Height="Auto" />
+                <wuxc:RowDefinition Height="Auto" />
+                <wuxc:RowDefinition Height="Auto" />
+            </wuxc:Grid.RowDefinitions>
+
+            <wuxc:Grid.ColumnDefinitions>
+                <wuxc:ColumnDefinition Width="*" />
+                <wuxc:ColumnDefinition Width="*" />
+            </wuxc:Grid.ColumnDefinitions>
+
+            <wuxc:StackPanel
+                wuxc:Grid.Column="0"
+                wuxc:Grid.Row="0"
+                Orientation="Horizontal">
+
+                <wuxc:TextBlock Text="Current SystemBackdrop: " />
+                <wuxc:TextBlock x:Name="SystemBackdropNameText" />
+            </wuxc:StackPanel>
+
+            <wuxc:Button
+                wuxc:Grid.Column="1"
+                wuxc:Grid.Row="0"
+                Click="SwitchSystemBackdropClick"
+                Content="Switch SystemBackdrop" />
+
+            <wuxc:StackPanel
+                wuxc:Grid.Column="0"
+                wuxc:Grid.Row="1"
+                Orientation="Horizontal">
+
+                <wuxc:TextBlock Text="Current Theme: " />
+                <wuxc:TextBlock x:Name="ThemeNameText" />
+            </wuxc:StackPanel>
+
+            <wuxc:Button
+                wuxc:Grid.Column="1"
+                wuxc:Grid.Row="1"
+                Click="SwitchThemeClick"
+                Content="Switch Theme" />
+
+            <wuxc:StackPanel
+                wuxc:Grid.Column="0"
+                wuxc:Grid.Row="2"
+                Orientation="Horizontal">
+
+                <wuxc:TextBlock Text="Current InputActive State: " />
+                <wuxc:TextBlock x:Name="InputActiveStateText" />
+            </wuxc:StackPanel>
+
+            <wuxc:Button
+                wuxc:Grid.Column="1"
+                wuxc:Grid.Row="2"
+                Click="SwitchInputActiveStateClick"
+                Content="Switch InputActive State" />
+        </wuxc:Grid>
+    </wuxc:StackPanel>
 </wuxc:Page>
