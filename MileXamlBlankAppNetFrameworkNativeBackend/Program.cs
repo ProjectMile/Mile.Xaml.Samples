@@ -127,7 +127,7 @@ namespace MileXamlBlankAppNetFrameworkNativeBackend
             IntPtr WindowHandle = CreateWindowEx(
                 WS_EX.CLIENTEDGE,
                 "Mile.Xaml.ContentWindow",
-                "MileXamlBlankApp (.Net 8)",
+                "MileXamlBlankApp (.Net Framework)",
                 WS.OVERLAPPEDWINDOW,
                 CW_USEDEFAULT,
                 0,
