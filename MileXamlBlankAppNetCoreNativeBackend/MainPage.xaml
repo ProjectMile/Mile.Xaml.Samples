@@ -21,6 +21,7 @@
             <Run>IsDynamicCodeSupported:</Run>
             <Run Text="{x:Bind IsDynamicCodeSupported}" />
         </TextBlock>
+        <TextBlock>Native Backend</TextBlock>
         <Button Click="Button_Click">Click Me</Button>
   </StackPanel>
 </Page>

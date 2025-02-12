@@ -36,7 +36,7 @@
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(1000, 700);
             Name = "Form1";
-            Text = "MileXamlBlankApp (.Net 8)";
+            Text = "MileXamlBlankApp (Modern .Net)";
             ResumeLayout(false);
         }
 

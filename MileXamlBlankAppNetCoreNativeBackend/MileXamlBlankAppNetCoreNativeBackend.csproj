@@ -2,16 +2,15 @@
 
 	<PropertyGroup>
 		<OutputType>WinExe</OutputType>
+		<Platforms>x86;x64;ARM64</Platforms>
 		<TargetFramework>net9.0-windows10.0.26100.0</TargetFramework>
 		<TargetPlatformVersion>10.0.26100.0</TargetPlatformVersion>
 		<TargetPlatformMinVersion>10.0.19041.0</TargetPlatformMinVersion>
 		<LangVersion>latest</LangVersion>
 		<ApplicationManifest>App.manifest</ApplicationManifest>
-		<UseWindowsForms>true</UseWindowsForms>
 		<PublishAot>true</PublishAot>
 		<RuntimeIdentifiers>win-x86;win-x64;win-arm64</RuntimeIdentifiers>
 		<ProjectPriFileName>resources.pri</ProjectPriFileName>
-		<_SuppressWinFormsTrimError>true</_SuppressWinFormsTrimError>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -19,6 +18,13 @@
 		<PackageReference Include="Mile.Xaml" Version="2.5.1250" />
 	</ItemGroup>
 
+	<!-- Remove Mile.Xaml.Managed WinForms Backend -->
+	<Target Name="RemoveMileXamlManaged" BeforeTargets="MarkupCompilePass1">
+		<ItemGroup>
+			<ReferencePath Remove="@(ReferencePath)"  Condition="'%(Filename)' == 'Mile.Xaml.Managed'" />
+		</ItemGroup>
+	</Target>
+	
 	<!-- Add resources.pri to publish output -->
 	<Target Name="AddPriFileToPublishOutput" AfterTargets="ComputeResolvedFilesToPublishList">
 		<ItemGroup>
