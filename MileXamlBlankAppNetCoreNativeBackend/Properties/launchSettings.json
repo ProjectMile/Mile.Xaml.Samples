@@ -1,0 +1,8 @@
+﻿{
+  "profiles": {
+    "MileXamlBlankAppNetCoreNativeBackend": {
+      "commandName": "Project",
+      "nativeDebugging": false
+    }
+  }
+}
