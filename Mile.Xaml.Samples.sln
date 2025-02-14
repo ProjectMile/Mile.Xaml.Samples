@@ -1,4 +1,4 @@
-
+﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33205.214
@@ -18,6 +18,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MileXamlBlankAppNetCoreNativeBackend", "MileXamlBlankAppNetCoreNativeBackend\MileXamlBlankAppNetCoreNativeBackend.csproj", "{F3AEEBEE-D800-FEC2-BDFE-6B95616FF959}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MileXamlControlsDemoNetCore", "MileXamlControlsDemoNetCore\MileXamlControlsDemoNetCore.csproj", "{0652FFF5-5207-479E-A247-B343FFA1364E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MileXamlControlsDemoNetFramework", "MileXamlControlsDemoNetFramework\MileXamlControlsDemoNetFramework.csproj", "{15946F7A-FE49-CAB6-B87B-F1CC5340CB1E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -157,6 +159,22 @@ Global
 		{0652FFF5-5207-479E-A247-B343FFA1364E}.Release|x64.Build.0 = Release|Any CPU
 		{0652FFF5-5207-479E-A247-B343FFA1364E}.Release|x86.ActiveCfg = Release|Any CPU
 		{0652FFF5-5207-479E-A247-B343FFA1364E}.Release|x86.Build.0 = Release|Any CPU
+		{15946F7A-FE49-CAB6-B87B-F1CC5340CB1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15946F7A-FE49-CAB6-B87B-F1CC5340CB1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15946F7A-FE49-CAB6-B87B-F1CC5340CB1E}.Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{15946F7A-FE49-CAB6-B87B-F1CC5340CB1E}.Debug|ARM64.Build.0 = Debug|Any CPU
+		{15946F7A-FE49-CAB6-B87B-F1CC5340CB1E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{15946F7A-FE49-CAB6-B87B-F1CC5340CB1E}.Debug|x64.Build.0 = Debug|Any CPU
+		{15946F7A-FE49-CAB6-B87B-F1CC5340CB1E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{15946F7A-FE49-CAB6-B87B-F1CC5340CB1E}.Debug|x86.Build.0 = Debug|Any CPU
+		{15946F7A-FE49-CAB6-B87B-F1CC5340CB1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15946F7A-FE49-CAB6-B87B-F1CC5340CB1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15946F7A-FE49-CAB6-B87B-F1CC5340CB1E}.Release|ARM64.ActiveCfg = Release|Any CPU
+		{15946F7A-FE49-CAB6-B87B-F1CC5340CB1E}.Release|ARM64.Build.0 = Release|Any CPU
+		{15946F7A-FE49-CAB6-B87B-F1CC5340CB1E}.Release|x64.ActiveCfg = Release|Any CPU
+		{15946F7A-FE49-CAB6-B87B-F1CC5340CB1E}.Release|x64.Build.0 = Release|Any CPU
+		{15946F7A-FE49-CAB6-B87B-F1CC5340CB1E}.Release|x86.ActiveCfg = Release|Any CPU
+		{15946F7A-FE49-CAB6-B87B-F1CC5340CB1E}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
