@@ -17,11 +17,5 @@
     <PackageReference Include="Mile.Xaml" Version="2.5.1250" />	
     <PackageReference Include="System.Numerics.Vectors" Version="4.5.0" />
   </ItemGroup>
-  
-  <ItemGroup>
-    <Content Update="Resources\NoiseAsset_256x256_PNG.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
 
 </Project>
