@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MileXamlBlankAppNetFramewor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MileXamlBlankAppNetCoreNativeBackend", "MileXamlBlankAppNetCoreNativeBackend\MileXamlBlankAppNetCoreNativeBackend.csproj", "{F3AEEBEE-D800-FEC2-BDFE-6B95616FF959}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MileXamlControlsDemoNetCore", "MileXamlControlsDemoNetCore\MileXamlControlsDemoNetCore.csproj", "{0652FFF5-5207-479E-A247-B343FFA1364E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -139,6 +141,22 @@ Global
 		{F3AEEBEE-D800-FEC2-BDFE-6B95616FF959}.Release|x64.Build.0 = Release|x64
 		{F3AEEBEE-D800-FEC2-BDFE-6B95616FF959}.Release|x86.ActiveCfg = Release|x86
 		{F3AEEBEE-D800-FEC2-BDFE-6B95616FF959}.Release|x86.Build.0 = Release|x86
+		{0652FFF5-5207-479E-A247-B343FFA1364E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0652FFF5-5207-479E-A247-B343FFA1364E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0652FFF5-5207-479E-A247-B343FFA1364E}.Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{0652FFF5-5207-479E-A247-B343FFA1364E}.Debug|ARM64.Build.0 = Debug|Any CPU
+		{0652FFF5-5207-479E-A247-B343FFA1364E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{0652FFF5-5207-479E-A247-B343FFA1364E}.Debug|x64.Build.0 = Debug|Any CPU
+		{0652FFF5-5207-479E-A247-B343FFA1364E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0652FFF5-5207-479E-A247-B343FFA1364E}.Debug|x86.Build.0 = Debug|Any CPU
+		{0652FFF5-5207-479E-A247-B343FFA1364E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0652FFF5-5207-479E-A247-B343FFA1364E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0652FFF5-5207-479E-A247-B343FFA1364E}.Release|ARM64.ActiveCfg = Release|Any CPU
+		{0652FFF5-5207-479E-A247-B343FFA1364E}.Release|ARM64.Build.0 = Release|Any CPU
+		{0652FFF5-5207-479E-A247-B343FFA1364E}.Release|x64.ActiveCfg = Release|Any CPU
+		{0652FFF5-5207-479E-A247-B343FFA1364E}.Release|x64.Build.0 = Release|Any CPU
+		{0652FFF5-5207-479E-A247-B343FFA1364E}.Release|x86.ActiveCfg = Release|Any CPU
+		{0652FFF5-5207-479E-A247-B343FFA1364E}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
