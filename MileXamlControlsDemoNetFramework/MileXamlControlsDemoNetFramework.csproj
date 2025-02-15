@@ -10,6 +10,7 @@
     <UseWindowsForms>true</UseWindowsForms>
     <!-- Add workaround for WinRT support in the old .NET SDK -->
     <SupportedOSPlatformVersion>$(TargetPlatformMinVersion)</SupportedOSPlatformVersion>
+	<MileXamlManagedNoNativeBackend>true</MileXamlManagedNoNativeBackend>
   </PropertyGroup>
   
   <ItemGroup>
