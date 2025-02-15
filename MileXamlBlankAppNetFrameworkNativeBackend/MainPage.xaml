@@ -8,10 +8,6 @@
   Background="{StaticResource ControlFillColorDefaultBrush}"
   mc:Ignorable="d">
 
-  <!--
-    Due to issues in Visual Studio, XAML Intellisense with WUX/.NET 8 only works
-    when all namespaces are declared by hand, including Windows.UI.Xaml.*
-  -->
   <StackPanel
     HorizontalAlignment="Center"
     VerticalAlignment="Center"

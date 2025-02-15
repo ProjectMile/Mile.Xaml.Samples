@@ -1,0 +1,8 @@
+﻿{
+  "profiles": {
+    "MileXamlControlsDemoNetCore": {
+      "commandName": "Project",
+      "nativeDebugging": false
+    }
+  }
+}

@@ -8,27 +8,48 @@ issue at https://github.com/ProjectMile/Mile.Xaml/issues.
 
 ## Samples List
 
-### [MileXamlBlankApp](MileXamlBlankApp)
+### C++/WinRT
+
+#### [MileXamlBlankApp](MileXamlBlankApp)
 
 A project for a single page C++/WinRT XAML Islands app with Mile.Xaml and no
 predefined layout.
 
-### [MileXamlControlsDemo](MileXamlControlsDemo)
+#### [MileXamlControlsDemo](MileXamlControlsDemo)
 
 A project for a single page C++/WinRT XAML Islands app with Mile.Xaml with
 modernized Windows 11 style XAML controls.
 
-### [MileXamlBlankAppNetFramework](MileXamlBlankAppNetFramework)
+### .NET Framework
+
+#### [MileXamlBlankAppNetFramework](MileXamlBlankAppNetFramework)
 
 A project (.NET SDK Style Project) for a single page C# (.NET Framework) XAML
 Islands app with Mile.Xaml and no predefined layout.
 
-### [MileXamlBlankAppNetFrameworkNativeBackend](MileXamlBlankAppNetFrameworkNativeBackend)
+#### [MileXamlBlankAppNetFrameworkNativeBackend](MileXamlBlankAppNetFrameworkNativeBackend)
 
 A project (.NET SDK Style Project) for a single page C# (.NET Framework) XAML
 Islands app with Mile.Xaml Native Backend and no predefined layout.
 
-### [MileXamlBlankAppNetCore](MileXamlBlankAppNetCore)
+#### [MileXamlControlsDemoNetFramework](MileXamlControlsDemoNetFramework)
+
+A project (.NET SDK Style Project) for a single page C# (.NET Framework) XAML
+Islands app with Mile.Xaml with modernized Windows 11 style XAML controls.
+
+### Modern .NET
+
+#### [MileXamlBlankAppNetCore](MileXamlBlankAppNetCore)
 
 A project for a single page C# (Modern .NET) XAML Islands app with Mile.Xaml and
 no predefined layout.
+
+#### [MileXamlBlankAppNetCoreNativeBackend](MileXamlBlankAppNetCoreNativeBackend)
+
+A project (.NET SDK Style Project) for a single page C# (Modern .NET) XAML
+Islands app with Mile.Xaml Native Backend and no predefined layout.
+
+#### [MileXamlControlsDemoNetCore](MileXamlControlsDemoNetCore)
+
+A project (.NET SDK Style Project) for a single page C# (Modern .NET) XAML
+Islands app with Mile.Xaml with modernized Windows 11 style XAML controls.

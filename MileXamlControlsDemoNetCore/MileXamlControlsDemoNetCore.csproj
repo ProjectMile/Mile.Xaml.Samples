@@ -20,6 +20,18 @@
 		<PackageReference Include="Mile.Xaml" Version="2.5.1250" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Compile Update="Form1.cs">
+	    <SubType>Form</SubType>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Update="Resources\NoiseAsset_256x256_PNG.png">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Content>
+	</ItemGroup>
+
 	<!-- Add resources.pri to publish output -->
 	<Target Name="AddPriFileToPublishOutput" AfterTargets="ComputeResolvedFilesToPublishList">
 		<ItemGroup>

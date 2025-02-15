@@ -8,15 +8,21 @@
     <LangVersion>latest</LangVersion>
     <ApplicationManifest>App.manifest</ApplicationManifest>
     <UseWindowsForms>true</UseWindowsForms>
-	<MileXamlManagedNoNativeBackend>true</MileXamlManagedNoNativeBackend>
-	<!-- Add workaround for WinRT support in the old .NET SDK -->
+    <!-- Add workaround for WinRT support in the old .NET SDK -->
     <SupportedOSPlatformVersion>$(TargetPlatformMinVersion)</SupportedOSPlatformVersion>
+	<MileXamlManagedNoNativeBackend>true</MileXamlManagedNoNativeBackend>
   </PropertyGroup>
   
   <ItemGroup>
     <PackageReference Include="Microsoft.Windows.SDK.Contracts" Version="10.0.26100.1" />
     <PackageReference Include="Mile.Xaml" Version="2.5.1250" />	
     <PackageReference Include="System.Numerics.Vectors" Version="4.5.0" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Content Update="Resources\NoiseAsset_256x256_PNG.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>
