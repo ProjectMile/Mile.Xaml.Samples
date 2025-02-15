@@ -20,9 +20,10 @@ namespace MileXamlControlsDemoNetCore.Backdrop
         {
             if (!string.IsNullOrEmpty(activatableClassId))
             {
-                Marshal.ThrowExceptionForHR(CombaseLibrary.WindowsCreateString(activatableClassId, activatableClassId.Length, out IntPtr stringPtr));
-                _ = CombaseLibrary.RoGetActivationFactory(stringPtr, iid, out IntPtr comp);
-                return (T)strategyBasedComWrappers.GetOrCreateObjectForComInstance(comp, CreateObjectFlags.None);
+                    Marshal.ThrowExceptionForHR(CombaseLibrary.WindowsCreateString(activatableClassId, activatableClassId.Length, out IntPtr stringPtr));
+                    Marshal.ThrowExceptionForHR(CombaseLibrary.RoGetActivationFactory(stringPtr, iid, out IntPtr comp));
+                    Marshal.ThrowExceptionForHR(CombaseLibrary.WindowsDeleteString(stringPtr));
+                    return (T)strategyBasedComWrappers.GetOrCreateObjectForComInstance(comp, CreateObjectFlags.None);
             }
             else
             {
