@@ -1,8 +1,8 @@
-﻿using System;
+﻿using MileXamlControlsDemoNetFramework.Helpers;
+using MileXamlControlsDemoNetFramework.WindowsAPI.ComTypes;
+using System;
 using System.Runtime.InteropServices;
 using Windows.Graphics.Effects;
-using MileXamlControlsDemoNetFramework.Backdrop;
-using MileXamlControlsDemoNetFramework.WindowsAPI.ComTypes;
 
 namespace MileXamlControlsDemoNetFramework.UI.Backdrop
 {
@@ -64,7 +64,7 @@ namespace MileXamlControlsDemoNetFramework.UI.Backdrop
         {
             if (index is 0)
             {
-                BackdropHelper.PropertyValueStatics.Value.CreateSingle(Opacity, out IntPtr ptr);
+                BackdropHelper.PropertyValueStatics.CreateSingle(Opacity, out IntPtr ptr);
                 if (ptr != IntPtr.Zero)
                 {
                     source = ptr;

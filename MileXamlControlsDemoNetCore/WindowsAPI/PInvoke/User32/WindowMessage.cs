@@ -374,7 +374,7 @@
 
         WM_KEYFIRST = 0x0100,
 
-        WM_KEYDOWN = 0x0100,
+        WM_KEYDOWN = WM_KEYFIRST,
 
         WM_KEYUP = 0x0101,
 
@@ -394,7 +394,7 @@
 
         WM_UNICHAR = 0x0109,
 
-        WM_KEYLAST = 0x0109,
+        WM_KEYLAST = WM_UNICHAR,
 
         WM_CONVERTREQUEST = 0x010A,
 
@@ -408,7 +408,7 @@
 
         WM_IME_COMPOSITION = 0x010F,
 
-        WM_IME_KEYLAST = 0x010F,
+        WM_IME_KEYLAST = WM_IME_COMPOSITION,
 
         WM_INITDIALOG = 0x0110,
 
@@ -660,7 +660,7 @@
 
         WM_MOUSEFIRST = 0x0200,
 
-        WM_MOUSEMOVE = 0x0200,
+        WM_MOUSEMOVE = WM_MOUSEFIRST,
 
         WM_LBUTTONDOWN = 0x0201,
 
@@ -690,7 +690,7 @@
 
         WM_MOUSEHWHEEL = 0x020E,
 
-        WM_MOUSELAST = 0x020E,
+        WM_MOUSELAST = WM_MOUSEHWHEEL,
 
         WM_PARENTNOTIFY = 0x0210,
 

@@ -6,12 +6,11 @@ namespace MileXamlControlsDemoNetCore
 {
     public partial class Form1 : Form
     {
-        WindowsXamlHost xamlHost = new WindowsXamlHost();
+        private readonly WindowsXamlHost xamlHost = new();
 
         public Form1()
         {
             InitializeComponent();
-
 
             this.Controls.Add(xamlHost);
             xamlHost.AutoSize = true;
@@ -23,7 +22,6 @@ namespace MileXamlControlsDemoNetCore
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
         }
     }
 }

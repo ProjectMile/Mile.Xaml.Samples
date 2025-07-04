@@ -1,20 +1,20 @@
-﻿using System;
+﻿using MileXamlControlsDemoNetCore.UI.Backdrop;
+using System;
 using System.Collections.ObjectModel;
 using Windows.Media.Core;
 using Windows.System;
-using Windows.UI.Composition.Desktop;
 using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
-using MileXamlControlsDemoNetCore.UI.Backdrop;
-using MileXamlControlsDemoNetCore.Backdrop;
+
+#pragma warning disable IDE0060
 
 namespace MileXamlControlsDemoNetCore
 {
     public sealed partial class MainPage : Page
     {
-        private ObservableCollection<TreeViewItemModel> TreeViewDataList = [
+        private ObservableCollection<TreeViewItemModel> TreeViewDataList { get; } = [
             new() {
                 Name = "TreeView Root Node 1", IsSelected = true,
                 ChildrenNode = [
@@ -32,11 +32,8 @@ namespace MileXamlControlsDemoNetCore
             }
         ];
 
-        private DesktopWindowTarget DesktopWindowTarget { get; set; }
-
         private ElementTheme currentTheme = ElementTheme.Default;
         private bool currentInputActiveState = false;
-        private SystemBackdrop currentSystemBackdrop = null;
 
         public MainPage()
         {
@@ -52,6 +49,7 @@ namespace MileXamlControlsDemoNetCore
             var vp9LinkUri = new Uri("ms-windows-store://pdp/?productid=9N4D0MSMP0PT");
             await Launcher.LaunchUriAsync(vp9LinkUri);
         }
+
         private async void HyperlinkButton_Click1(object sender, RoutedEventArgs args)
         {
             var vp9LinkUri = new Uri("https://learn.microsoft.com/en-us/answers/questions/635070/(ver-10-0-19041-0)-c-winrt-treeview-nodes-not-prop?childtoview=635698");
@@ -60,15 +58,7 @@ namespace MileXamlControlsDemoNetCore
 
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
-            DesktopWindowTarget = BackdropHelper.InitializeDesktopWindowTarget(Program.MainForm, false);
-
-            currentSystemBackdrop = new MicaBackdrop(DesktopWindowTarget, this, Program.MainForm)
-            {
-                Kind = MicaKind.Base,
-                RequestedTheme = currentTheme,
-                IsInputActive = currentInputActiveState
-            };
-            currentSystemBackdrop.InitializeBackdrop();
+            Background = new MicaBrush(MicaKind.Base, this, Program.MainForm, currentInputActiveState);
 
             currentTheme = ElementTheme.Default;
             currentInputActiveState = false;
@@ -84,15 +74,7 @@ namespace MileXamlControlsDemoNetCore
             if (SystemBackdropNameText.Text == "None")
             {
                 Background = new SolidColorBrush(Colors.Transparent);
-                currentSystemBackdrop?.Dispose();
-                currentSystemBackdrop = null;
-                currentSystemBackdrop = new MicaBackdrop(DesktopWindowTarget, this, Program.MainForm)
-                {
-                    Kind = MicaKind.Base,
-                    RequestedTheme = currentTheme,
-                    IsInputActive = currentInputActiveState
-                };
-                currentSystemBackdrop.InitializeBackdrop();
+                Background = new MicaBrush(MicaKind.Base, this, Program.MainForm, currentInputActiveState);
 
                 SystemBackdropNameText.Text = "MicaBase";
                 ThemeNameText.Text = currentTheme.ToString();
@@ -100,16 +82,7 @@ namespace MileXamlControlsDemoNetCore
             }
             else if (SystemBackdropNameText.Text == "MicaBase")
             {
-                Background = new SolidColorBrush(Colors.Transparent);
-                currentSystemBackdrop?.Dispose();
-                currentSystemBackdrop = null;
-                currentSystemBackdrop = new MicaBackdrop(DesktopWindowTarget, this, Program.MainForm)
-                {
-                    Kind = MicaKind.BaseAlt,
-                    RequestedTheme = currentTheme,
-                    IsInputActive = currentInputActiveState
-                };
-                currentSystemBackdrop.InitializeBackdrop();
+                Background = new MicaBrush(MicaKind.BaseAlt, this, Program.MainForm, currentInputActiveState);
 
                 SystemBackdropNameText.Text = "MicaAlt";
                 ThemeNameText.Text = currentTheme.ToString();
@@ -117,17 +90,7 @@ namespace MileXamlControlsDemoNetCore
             }
             else if (SystemBackdropNameText.Text == "MicaAlt")
             {
-                Background = new SolidColorBrush(Colors.Transparent);
-                currentSystemBackdrop?.Dispose();
-                currentSystemBackdrop = null;
-                currentSystemBackdrop = new DesktopAcrylicBackdrop(DesktopWindowTarget, this, Program.MainForm)
-                {
-                    Kind = DesktopAcrylicKind.Default,
-                    RequestedTheme = currentTheme,
-                    IsInputActive = currentInputActiveState,
-                    UseHostBackdropBrush = true
-                };
-                currentSystemBackdrop.InitializeBackdrop();
+                Background = new DesktopAcrylicBrush(DesktopAcrylicKind.Default, this, Program.MainForm, currentInputActiveState, true);
 
                 SystemBackdropNameText.Text = "DesktopAcrylicDefault";
                 ThemeNameText.Text = currentTheme.ToString();
@@ -135,17 +98,7 @@ namespace MileXamlControlsDemoNetCore
             }
             else if (SystemBackdropNameText.Text == "DesktopAcrylicDefault")
             {
-                Background = new SolidColorBrush(Colors.Transparent);
-                currentSystemBackdrop?.Dispose();
-                currentSystemBackdrop = null;
-                currentSystemBackdrop = new DesktopAcrylicBackdrop(DesktopWindowTarget, this, Program.MainForm)
-                {
-                    Kind = DesktopAcrylicKind.Base,
-                    RequestedTheme = currentTheme,
-                    IsInputActive = currentInputActiveState,
-                    UseHostBackdropBrush = true
-                };
-                currentSystemBackdrop.InitializeBackdrop();
+                Background = new DesktopAcrylicBrush(DesktopAcrylicKind.Base, this, Program.MainForm, currentInputActiveState, true);
 
                 SystemBackdropNameText.Text = "DesktopAcrylicBase";
                 ThemeNameText.Text = currentTheme.ToString();
@@ -153,17 +106,7 @@ namespace MileXamlControlsDemoNetCore
             }
             else if (SystemBackdropNameText.Text == "DesktopAcrylicBase")
             {
-                Background = new SolidColorBrush(Colors.Transparent);
-                currentSystemBackdrop?.Dispose();
-                currentSystemBackdrop = null;
-                currentSystemBackdrop = new DesktopAcrylicBackdrop(DesktopWindowTarget, this, Program.MainForm)
-                {
-                    Kind = DesktopAcrylicKind.Thin,
-                    RequestedTheme = currentTheme,
-                    IsInputActive = currentInputActiveState,
-                    UseHostBackdropBrush = true
-                };
-                currentSystemBackdrop.InitializeBackdrop();
+                Background = new DesktopAcrylicBrush(DesktopAcrylicKind.Thin, this, Program.MainForm, currentInputActiveState, true);
 
                 SystemBackdropNameText.Text = "DesktopAcrylicThin";
                 ThemeNameText.Text = currentTheme.ToString();
@@ -172,10 +115,7 @@ namespace MileXamlControlsDemoNetCore
             else if (SystemBackdropNameText.Text == "DesktopAcrylicThin")
             {
                 SystemBackdropNameText.Text = "None";
-                currentSystemBackdrop?.Dispose();
-                currentSystemBackdrop = null;
                 ThemeNameText.Text = currentTheme.ToString();
-                InputActiveStateText.Text = currentInputActiveState.ToString();
 
                 if (ActualTheme is ElementTheme.Light)
                 {
@@ -195,11 +135,7 @@ namespace MileXamlControlsDemoNetCore
                 RequestedTheme = ElementTheme.Light;
                 currentTheme = ElementTheme.Light;
                 ThemeNameText.Text = ElementTheme.Light.ToString();
-                if (currentSystemBackdrop is not null)
-                {
-                    currentSystemBackdrop.RequestedTheme = ElementTheme.Light;
-                }
-                else
+                if (SystemBackdropNameText.Text == "None")
                 {
                     Background = new SolidColorBrush(Color.FromArgb(255, 243, 243, 243));
                 }
@@ -209,11 +145,7 @@ namespace MileXamlControlsDemoNetCore
                 RequestedTheme = ElementTheme.Dark;
                 currentTheme = ElementTheme.Dark;
                 ThemeNameText.Text = ElementTheme.Dark.ToString();
-                if (currentSystemBackdrop is not null)
-                {
-                    currentSystemBackdrop.RequestedTheme = ElementTheme.Dark;
-                }
-                else
+                if (SystemBackdropNameText.Text == "None")
                 {
                     Background = new SolidColorBrush(Color.FromArgb(255, 32, 32, 32));
                 }
@@ -223,20 +155,13 @@ namespace MileXamlControlsDemoNetCore
                 RequestedTheme = ElementTheme.Default;
                 currentTheme = ElementTheme.Default;
                 ThemeNameText.Text = ElementTheme.Default.ToString();
-                if (currentSystemBackdrop is not null)
+                if (ActualTheme is ElementTheme.Light)
                 {
-                    currentSystemBackdrop.RequestedTheme = ElementTheme.Default;
+                    Background = new SolidColorBrush(Color.FromArgb(255, 243, 243, 243));
                 }
                 else
                 {
-                    if (ActualTheme is ElementTheme.Light)
-                    {
-                        Background = new SolidColorBrush(Color.FromArgb(255, 243, 243, 243));
-                    }
-                    else
-                    {
-                        Background = new SolidColorBrush(Color.FromArgb(255, 32, 32, 32));
-                    }
+                    Background = new SolidColorBrush(Color.FromArgb(255, 32, 32, 32));
                 }
             }
         }
@@ -247,25 +172,38 @@ namespace MileXamlControlsDemoNetCore
             {
                 currentInputActiveState = false;
                 InputActiveStateText.Text = currentInputActiveState.ToString();
-                if (currentSystemBackdrop is not null)
-                {
-                    currentSystemBackdrop.IsInputActive = false;
-                }
             }
             else
             {
                 currentInputActiveState = true;
                 InputActiveStateText.Text = currentInputActiveState.ToString();
-                if (currentSystemBackdrop is not null)
-                {
-                    currentSystemBackdrop.IsInputActive = true;
-                }
+            }
+
+            if (SystemBackdropNameText.Text == "Base")
+            {
+                Background = new MicaBrush(MicaKind.Base, this, Program.MainForm, currentInputActiveState);
+            }
+            else if (SystemBackdropNameText.Text == "MicaAlt")
+            {
+                Background = new MicaBrush(MicaKind.BaseAlt, this, Program.MainForm, currentInputActiveState);
+            }
+            else if (SystemBackdropNameText.Text == "DesktopAcrylicDefault")
+            {
+                Background = new DesktopAcrylicBrush(DesktopAcrylicKind.Default, this, Program.MainForm, currentInputActiveState, true);
+            }
+            else if (SystemBackdropNameText.Text == "DesktopAcrylicBase")
+            {
+                Background = new DesktopAcrylicBrush(DesktopAcrylicKind.Base, this, Program.MainForm, currentInputActiveState, true);
+            }
+            else if (SystemBackdropNameText.Text == "DesktopAcrylicThin")
+            {
+                Background = new DesktopAcrylicBrush(DesktopAcrylicKind.Thin, this, Program.MainForm, currentInputActiveState, true);
             }
         }
 
         private void OnActualThemeChanged(FrameworkElement sender, object args)
         {
-            if (currentSystemBackdrop is not null)
+            if (SystemBackdropNameText.Text == "None")
             {
                 if (ActualTheme is ElementTheme.Light)
                 {

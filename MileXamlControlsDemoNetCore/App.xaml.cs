@@ -3,7 +3,7 @@ using Windows.UI.Xaml;
 
 namespace MileXamlControlsDemoNetCore
 {
-    sealed partial class App : Application
+    public sealed partial class App : Application
     {
         public App()
         {

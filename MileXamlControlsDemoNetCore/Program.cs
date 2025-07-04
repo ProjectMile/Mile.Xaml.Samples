@@ -11,6 +11,7 @@ namespace MileXamlControlsDemoNetCore
         private static void Main()
         {
             Application.EnableVisualStyles();
+            Application.SetHighDpiMode(HighDpiMode.PerMonitorV2);
             Application.SetCompatibleTextRenderingDefault(false);
 
             App app = new();
