@@ -1,5 +1,5 @@
-﻿using System;
-using MileXamlControlsDemoNetCore.WindowsAPI.PInvoke.User32;
+﻿using MileXamlControlsDemoNetCore.WindowsAPI.PInvoke.User32;
+using System;
 
 namespace MileXamlControlsDemoNetCore.WindowsAPI.PInvoke.Comctl32
 {

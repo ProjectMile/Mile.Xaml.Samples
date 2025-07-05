@@ -6,8 +6,6 @@ namespace MileXamlControlsDemoNetCore.WindowsAPI.PInvoke.Kernel32
     {
         private const string Kernel32 = "kernel32.dll";
 
-        public const long APPMODEL_ERROR_NO_PACKAGE = 15700L;
-
         [LibraryImport(Kernel32, EntryPoint = "GetSystemPowerStatus", SetLastError = false)]
         [return: MarshalAs(UnmanagedType.Bool)]
         public static partial bool GetSystemPowerStatus(out SYSTEM_POWER_STATUS lpSystemPowerStatus);

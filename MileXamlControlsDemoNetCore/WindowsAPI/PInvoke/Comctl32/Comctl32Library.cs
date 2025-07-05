@@ -1,6 +1,8 @@
-﻿using System;
+﻿using MileXamlControlsDemoNetCore.WindowsAPI.PInvoke.User32;
+using System;
 using System.Runtime.InteropServices;
-using MileXamlControlsDemoNetCore.WindowsAPI.PInvoke.User32;
+
+#pragma warning disable CA1401
 
 namespace MileXamlControlsDemoNetCore.WindowsAPI.PInvoke.Comctl32
 {

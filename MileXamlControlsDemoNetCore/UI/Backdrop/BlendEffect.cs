@@ -1,7 +1,6 @@
-﻿using MileXamlControlsDemoNetCore.Backdrop;
+﻿using MileXamlControlsDemoNetCore.Helpers;
 using MileXamlControlsDemoNetCore.WindowsAPI.ComTypes;
 using System;
-using System.Diagnostics;
 using System.Runtime.InteropServices;
 using Windows.Graphics.Effects;
 
@@ -59,7 +58,7 @@ namespace MileXamlControlsDemoNetCore.UI.Backdrop
         {
             if (index is 0)
             {
-                BackdropHelper.PropertyValueStatics.Value.CreateUInt32((uint)Mode, out IntPtr ptr);
+                BackdropHelper.PropertyValueStatics.CreateUInt32((uint)Mode, out IntPtr ptr);
                 if (ptr != IntPtr.Zero)
                 {
                     source = ptr;

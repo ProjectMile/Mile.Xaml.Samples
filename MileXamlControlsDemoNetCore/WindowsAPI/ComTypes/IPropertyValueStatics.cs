@@ -87,7 +87,7 @@ namespace MileXamlControlsDemoNetCore.WindowsAPI.ComTypes
         int CreateUInt16Array(int valueLength, [In, MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 0)] ushort[] value, out IntPtr propertyValue);
 
         [PreserveSig]
-        int CreateInt32Array(int valueLength, [MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 0)] int[] value, out IntPtr propertyValue);
+        int CreateInt32Array(int valueLength, [In, MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 0)] int[] value, out IntPtr propertyValue);
 
         [PreserveSig]
         int CreateUInt32Array(int valueLength, [In, MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 0)] uint[] value, out IntPtr propertyValue);

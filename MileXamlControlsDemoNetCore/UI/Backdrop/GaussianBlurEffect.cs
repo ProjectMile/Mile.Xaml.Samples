@@ -1,9 +1,8 @@
-﻿using System;
+﻿using MileXamlControlsDemoNetCore.Helpers;
+using MileXamlControlsDemoNetCore.WindowsAPI.ComTypes;
+using System;
 using System.Runtime.InteropServices;
 using Windows.Graphics.Effects;
-using MileXamlControlsDemoNetCore.Backdrop;
-using MileXamlControlsDemoNetCore.WindowsAPI.ComTypes;
-using System.Diagnostics;
 
 namespace MileXamlControlsDemoNetCore.UI.Backdrop
 {
@@ -74,7 +73,7 @@ namespace MileXamlControlsDemoNetCore.UI.Backdrop
         {
             if (index is 0)
             {
-                BackdropHelper.PropertyValueStatics.Value.CreateSingle(BlurAmount, out IntPtr ptr);
+                BackdropHelper.PropertyValueStatics.CreateSingle(BlurAmount, out IntPtr ptr);
 
                 if (ptr != IntPtr.Zero)
                 {
@@ -84,7 +83,7 @@ namespace MileXamlControlsDemoNetCore.UI.Backdrop
             }
             else if (index is 1)
             {
-                BackdropHelper.PropertyValueStatics.Value.CreateUInt32((uint)Optimization, out IntPtr ptr);
+                BackdropHelper.PropertyValueStatics.CreateUInt32((uint)Optimization, out IntPtr ptr);
 
                 if (ptr != IntPtr.Zero)
                 {
@@ -94,7 +93,7 @@ namespace MileXamlControlsDemoNetCore.UI.Backdrop
             }
             else if (index is 2)
             {
-                BackdropHelper.PropertyValueStatics.Value.CreateUInt32((uint)BorderMode, out IntPtr ptr);
+                BackdropHelper.PropertyValueStatics.CreateUInt32((uint)BorderMode, out IntPtr ptr);
 
                 if (ptr != IntPtr.Zero)
                 {

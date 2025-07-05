@@ -1,4 +1,4 @@
-﻿using MileXamlControlsDemoNetFramework.Backdrop;
+﻿using MileXamlControlsDemoNetFramework.Helpers;
 using MileXamlControlsDemoNetFramework.WindowsAPI.ComTypes;
 using System;
 using System.Numerics;
@@ -66,7 +66,7 @@ namespace MileXamlControlsDemoNetFramework.UI.Backdrop
         {
             if (index is 0)
             {
-                BackdropHelper.PropertyValueStatics.Value.CreateSingleArray(4, [Color.R / 255.0f, Color.G / 255.0f, Color.B / 255.0f, Color.A / 255.0f], out IntPtr ptr);
+                BackdropHelper.PropertyValueStatics.CreateSingleArray(4, [Color.R / 255.0f, Color.G / 255.0f, Color.B / 255.0f, Color.A / 255.0f], out IntPtr ptr);
                 if (ptr != IntPtr.Zero)
                 {
                     source = ptr;
