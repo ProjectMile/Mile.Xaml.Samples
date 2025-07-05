@@ -2,29 +2,20 @@
 using MileXamlControlsDemoNetCore.WindowsAPI.ComTypes;
 using System;
 using System.Runtime.InteropServices;
+using System.Runtime.InteropServices.Marshalling;
 using Windows.Graphics.Effects;
+using WinRT;
 
 namespace MileXamlControlsDemoNetCore.UI.Backdrop
 {
-    [Guid("811D79A4-DE28-4454-8094-C64685F8BD4C")]
+    [GeneratedComClass, Guid("811D79A4-DE28-4454-8094-C64685F8BD4C")]
     public sealed partial class OpacityEffect : IGraphicsEffect, IGraphicsEffectSource, IGraphicsEffectD2D1Interop
     {
-        public D2D1_BUFFER_PRECISION BufferPrecision { get; set; }
-
-        public bool CacheOutput { get; set; }
+        public string Name { get; set; } = string.Empty;
 
         public float Opacity { get; set; } = 1.0f;
 
         public IGraphicsEffectSource Source { get; set; }
-
-        private string _name = string.Empty;
-
-        public string Name
-        {
-            get { return _name; }
-
-            set { _name = value; }
-        }
 
         public int GetEffectId(out Guid id)
         {
@@ -32,14 +23,9 @@ namespace MileXamlControlsDemoNetCore.UI.Backdrop
             return 0;
         }
 
-        public static bool IsSupported
+        public int GetNamedPropertyMapping(string name, out uint index, out GRAPHICS_EFFECT_PROPERTY_MAPPING mapping)
         {
-            get { return true; }
-        }
-
-        public int GetNamedPropertyMapping(IntPtr name, out uint index, out GRAPHICS_EFFECT_PROPERTY_MAPPING mapping)
-        {
-            switch (Marshal.PtrToStringUni(name))
+            switch (name)
             {
                 case nameof(Opacity):
                     {
@@ -80,9 +66,9 @@ namespace MileXamlControlsDemoNetCore.UI.Backdrop
             return 0;
         }
 
-        public int GetSource(uint index, out IGraphicsEffectSource source)
+        public int GetSource(uint index, out IntPtr source)
         {
-            source = Source;
+            source = MarshalInterface<IGraphicsEffectSource>.FromManaged(Source);
             return 0;
         }
 

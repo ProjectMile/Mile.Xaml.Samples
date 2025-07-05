@@ -2,16 +2,16 @@
 using MileXamlControlsDemoNetCore.WindowsAPI.ComTypes;
 using System;
 using System.Runtime.InteropServices;
+using System.Runtime.InteropServices.Marshalling;
 using Windows.Graphics.Effects;
+using WinRT;
 
 namespace MileXamlControlsDemoNetCore.UI.Backdrop
 {
-    [Guid("12F575E8-4DB1-485F-9A84-03A07DD3829F")]
+    [GeneratedComClass, Guid("12F575E8-4DB1-485F-9A84-03A07DD3829F")]
     public sealed partial class CrossFadeEffect : IGraphicsEffect, IGraphicsEffectSource, IGraphicsEffectD2D1Interop
     {
-        public D2D1_BUFFER_PRECISION BufferPrecision { get; set; }
-
-        public bool CacheOutput { get; set; }
+        public string Name { get; set; } = string.Empty;
 
         public float CrossFade { get; set; } = 0.5f;
 
@@ -19,24 +19,15 @@ namespace MileXamlControlsDemoNetCore.UI.Backdrop
 
         public IGraphicsEffectSource Source2 { get; set; }
 
-        private string _name = string.Empty;
-
-        public string Name
-        {
-            get { return _name; }
-
-            set { _name = value; }
-        }
-
         public int GetEffectId(out Guid id)
         {
             id = typeof(CrossFadeEffect).GUID;
             return 0;
         }
 
-        public int GetNamedPropertyMapping(IntPtr name, out uint index, out GRAPHICS_EFFECT_PROPERTY_MAPPING mapping)
+        public int GetNamedPropertyMapping(string name, out uint index, out GRAPHICS_EFFECT_PROPERTY_MAPPING mapping)
         {
-            switch (Marshal.PtrToStringUni(name))
+            switch (name)
             {
                 case nameof(CrossFade):
                     {
@@ -77,21 +68,21 @@ namespace MileXamlControlsDemoNetCore.UI.Backdrop
             return 0;
         }
 
-        public int GetSource(uint index, out IGraphicsEffectSource source)
+        public int GetSource(uint index, out IntPtr source)
         {
             if (index is 0)
             {
-                source = Source1;
+                source = MarshalInterface<IGraphicsEffectSource>.FromManaged(Source1);
                 return 0;
             }
             else if (index is 1)
             {
-                source = Source2;
+                source = MarshalInterface<IGraphicsEffectSource>.FromManaged(Source2);
                 return 0;
             }
             else
             {
-                source = null;
+                source = IntPtr.Zero;
                 return 2147483637;
             }
         }
