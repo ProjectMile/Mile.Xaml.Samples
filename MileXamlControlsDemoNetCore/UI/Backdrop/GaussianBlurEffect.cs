@@ -2,18 +2,16 @@
 using MileXamlControlsDemoNetCore.WindowsAPI.ComTypes;
 using System;
 using System.Runtime.InteropServices;
+using System.Runtime.InteropServices.Marshalling;
 using Windows.Graphics.Effects;
+using WinRT;
 
 namespace MileXamlControlsDemoNetCore.UI.Backdrop
 {
-    [Guid("1FEB6D69-2FE6-4AC9-8C58-1D7F93E7A6A5")]
-    public partial class GaussianBlurEffect : IGraphicsEffect, IGraphicsEffectSource, IGraphicsEffectD2D1Interop
+    [GeneratedComClass, Guid("1FEB6D69-2FE6-4AC9-8C58-1D7F93E7A6A5")]
+    public sealed partial class GaussianBlurEffect : IGraphicsEffect, IGraphicsEffectSource, IGraphicsEffectD2D1Interop
     {
-        public D2D1_BUFFER_PRECISION BufferPrecision { get; set; }
-
-        public bool CacheOutput { get; set; }
-
-        public IGraphicsEffectSource Source { get; set; }
+        public string Name { get; set; } = string.Empty;
 
         public float BlurAmount { get; set; } = 3.0f;
 
@@ -21,14 +19,7 @@ namespace MileXamlControlsDemoNetCore.UI.Backdrop
 
         public EffectBorderMode BorderMode { get; set; } = EffectBorderMode.Soft;
 
-        private string _name = string.Empty;
-
-        public string Name
-        {
-            get { return _name; }
-
-            set { _name = value; }
-        }
+        public IGraphicsEffectSource Source { get; set; }
 
         public int GetEffectId(out Guid id)
         {
@@ -36,9 +27,9 @@ namespace MileXamlControlsDemoNetCore.UI.Backdrop
             return 0;
         }
 
-        public int GetNamedPropertyMapping(IntPtr name, out uint index, out GRAPHICS_EFFECT_PROPERTY_MAPPING mapping)
+        public int GetNamedPropertyMapping(string name, out uint index, out GRAPHICS_EFFECT_PROPERTY_MAPPING mapping)
         {
-            switch (Marshal.PtrToStringUni(name))
+            switch (name)
             {
                 case nameof(BlurAmount):
                     {
@@ -112,16 +103,16 @@ namespace MileXamlControlsDemoNetCore.UI.Backdrop
             return 0;
         }
 
-        public int GetSource(uint index, out IGraphicsEffectSource source)
+        public int GetSource(uint index, out IntPtr source)
         {
             if (index is 0)
             {
-                source = Source;
+                source = MarshalInterface<IGraphicsEffectSource>.FromManaged(Source);
                 return 0;
             }
             else
             {
-                source = null;
+                source = IntPtr.Zero;
                 return 2147483637;
             }
         }
