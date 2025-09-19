@@ -10,7 +10,7 @@
       <Platform>AnyCPU</Platform>
     </ProjectConfiguration>
   </ItemGroup>
-  <Import Sdk="Mile.Project.Configurations" Version="1.0.1766" Project="Mile.Project.Wap.props" />
+  <Import Sdk="Mile.Project.Configurations" Version="1.0.1768" Project="Mile.Project.Wap.props" />
   <PropertyGroup>
     <ProjectGuid>73f2781a-8ec6-40fb-ad81-7dfe9cc94f3c</ProjectGuid>
     <TargetPlatformVersion>10.0.26100.0</TargetPlatformVersion>
@@ -37,5 +37,5 @@
   <ItemGroup>
     <ProjectReference Include="..\MileXamlBlankAppNetFramework\MileXamlBlankAppNetFramework.csproj" />
   </ItemGroup>
-  <Import Sdk="Mile.Project.Configurations" Version="1.0.1766" Project="Mile.Project.Wap.targets" />
+  <Import Sdk="Mile.Project.Configurations" Version="1.0.1768" Project="Mile.Project.Wap.targets" />
 </Project>
