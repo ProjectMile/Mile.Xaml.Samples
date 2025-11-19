@@ -1,0 +1,32 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="ARM64" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="MileXamlBlankApp/MileXamlBlankApp.vcxproj" Id="b30d3882-3c80-4c8c-b64c-52fb9083f5d7" />
+  <Project Path="MileXamlBlankAppNetCore/MileXamlBlankAppNetCore.csproj" />
+  <Project Path="MileXamlBlankAppNetCoreNativeBackend/MileXamlBlankAppNetCoreNativeBackend.csproj">
+    <Platform Solution="*|Any CPU" Project="x64" />
+    <Platform Solution="*|ARM64" Project="ARM64" />
+    <Platform Solution="*|x64" Project="x64" />
+    <Platform Solution="*|x86" Project="x86" />
+  </Project>
+  <Project Path="MileXamlBlankAppNetFramework/MileXamlBlankAppNetFramework.csproj">
+    <Build Solution="*|ARM64" Project="false" />
+    <Build Solution="*|x86" Project="false" />
+    <Deploy Solution="*|x64" />
+  </Project>
+  <Project Path="MileXamlBlankAppNetFrameworkNativeBackend/MileXamlBlankAppNetFrameworkNativeBackend.csproj" />
+  <Project Path="MileXamlBlankAppNetFrameworkPackage/MileXamlBlankAppNetFrameworkPackage.wapproj" Type="c7167f0d-bc9f-4e6e-afe1-012c56b48db5">
+    <Platform Project="AnyCPU" />
+    <Build Solution="*|ARM64" Project="false" />
+    <Build Solution="*|x86" Project="false" />
+    <Deploy Solution="*|Any CPU" />
+    <Deploy Solution="*|x64" />
+  </Project>
+  <Project Path="MileXamlControlsDemo/MileXamlControlsDemo.vcxproj" Id="5674d8df-3c1e-4d7b-8382-e4fbae12aaa5" />
+  <Project Path="MileXamlControlsDemoNetCore/MileXamlControlsDemoNetCore.csproj" />
+  <Project Path="MileXamlControlsDemoNetFramework/MileXamlControlsDemoNetFramework.csproj" />
+</Solution>

@@ -1,13 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project 
   DefaultTargets="Restore;Build"
-  xmlns="http://schemas.microsoft.com/developer/msbuild/2003">    
+  xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <SolutionPath>$(MSBuildThisFileDirectory)Mile.Xaml.Samples.slnx</SolutionPath>
+  </PropertyGroup>
   <Target Name="Restore">
     <ItemGroup>
-      <ProjectReference Include="$(MSBuildThisFileDirectory)Mile.Xaml.Samples.sln">
+      <ProjectReference Include="$(SolutionPath)">
         <AdditionalProperties>Configuration=Debug;Platform=x64</AdditionalProperties>   
       </ProjectReference>
-      <ProjectReference Include="$(MSBuildThisFileDirectory)Mile.Xaml.Samples.sln">
+      <ProjectReference Include="$(SolutionPath)">
         <AdditionalProperties>Configuration=Release;Platform=x64</AdditionalProperties>   
       </ProjectReference>
     </ItemGroup>
@@ -19,22 +22,22 @@
   </Target>
   <Target Name="Build">
     <ItemGroup>
-      <ProjectReference Include="$(MSBuildThisFileDirectory)Mile.Xaml.Samples.sln">
+      <ProjectReference Include="$(SolutionPath)">
         <AdditionalProperties>Configuration=Debug;Platform=x86</AdditionalProperties>   
       </ProjectReference>
-      <ProjectReference Include="$(MSBuildThisFileDirectory)Mile.Xaml.Samples.sln">
+      <ProjectReference Include="$(SolutionPath)">
         <AdditionalProperties>Configuration=Release;Platform=x86</AdditionalProperties>   
       </ProjectReference>
-      <ProjectReference Include="$(MSBuildThisFileDirectory)Mile.Xaml.Samples.sln">
+      <ProjectReference Include="$(SolutionPath)">
         <AdditionalProperties>Configuration=Debug;Platform=x64</AdditionalProperties>   
       </ProjectReference>
-      <ProjectReference Include="$(MSBuildThisFileDirectory)Mile.Xaml.Samples.sln">
+      <ProjectReference Include="$(SolutionPath)">
         <AdditionalProperties>Configuration=Release;Platform=x64</AdditionalProperties>   
       </ProjectReference>
-      <ProjectReference Include="$(MSBuildThisFileDirectory)Mile.Xaml.Samples.sln">
+      <ProjectReference Include="$(SolutionPath)">
         <AdditionalProperties>Configuration=Debug;Platform=ARM64</AdditionalProperties>   
       </ProjectReference>
-      <ProjectReference Include="$(MSBuildThisFileDirectory)Mile.Xaml.Samples.sln">
+      <ProjectReference Include="$(SolutionPath)">
         <AdditionalProperties>Configuration=Release;Platform=ARM64</AdditionalProperties>   
       </ProjectReference>
     </ItemGroup>
